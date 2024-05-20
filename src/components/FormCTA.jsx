@@ -89,7 +89,7 @@ export function FormCTA() {
             fullWidth
           />
         </div>
-        <div className={styles.container4}>
+        {/* <div className={styles.container4}>
           <Checkbox color="primary"/>
           <p>
             Li e concordo com a{" "}
@@ -98,7 +98,7 @@ export function FormCTA() {
             </a>{" "}
             da AGILE7 TECH.
           </p>
-        </div>
+        </div> */}
 
         <LottieButton />
       </form>
