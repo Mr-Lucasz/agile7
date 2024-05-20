@@ -48,7 +48,7 @@ export const NavMobile = () => {
 
   
   return (
-    <div ref={ref} className="hidden">
+    <div ref={ref} className={styles.hidden}>
       <Hamburger toggled={isOpen} size={35} toggle={setOpen} color="#fff" />
         <AnimatePresence>
             {isOpen && (

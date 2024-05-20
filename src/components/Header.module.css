@@ -13,9 +13,9 @@
     align-items: center;
     margin: 0;
     background: radial-gradient(at var(--mouse-x) var(--mouse-y),#1a0f02, rgb(22, 49, 0), #050300);
-
-    
 }
+
+/* responsividade */
 
 /*#00270942 */
 
@@ -40,7 +40,6 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-
     padding: 1rem;
     box-sizing: border-box;
 }
@@ -91,15 +90,16 @@
 }
 
 /* .responsividade */
-@media (max-width: 768px) {
-    .responsividade{
-        display: flex;
-        flex-direction: row-reverse;
-    }
+@media (max-width: 1024px) {
     .navbar{
         display:none;
     }
     .header{
+        height: 4.5rem;
+        display: flex;
         gap: 1rem;
+        justify-content: space-between;
+        padding: 0 1rem;
+        box-sizing: border-box;
     }
 }

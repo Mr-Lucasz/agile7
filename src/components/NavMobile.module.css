@@ -4,7 +4,7 @@
   
   @media (max-width: 1024px) {
     .hidden {
-      display: none;
+      display: flex;
     }
   }
 

@@ -17,7 +17,6 @@ export function Header() {
       <div className={styles.logo}>
         <img src={Agile_Solutions} alt="Agile Solutions" />
       </div>
-      <div className={styles.responsividade}>
       <nav className={styles.navbar}>
         <ul>
           <li>
@@ -36,7 +35,6 @@ export function Header() {
         CONTATO
         <img src={Whatsapp} alt="Whatsapp" />
       </button>
-        </div>
         <NavMobile />
     </header>
   );
