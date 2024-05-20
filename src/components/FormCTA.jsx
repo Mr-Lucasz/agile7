@@ -15,10 +15,11 @@ export function FormCTA() {
     handleSubmit,
     reset,
     formState: { errors },
-    getValues,
+    watch,
   } = useForm();
-  const [open, setOpen] = useState(false);
 
+  const [open, setOpen] = useState(false);
+  const formValues = watch();
   // Add state for checkbox
   const [checked, setChecked] = useState(false);
 
@@ -155,7 +156,7 @@ export function FormCTA() {
 
         <LottieButton
             onSubmit={onSubmit}
-            formState={{ ...getValues(), checkbox: checked, ...errors }}
+            formState={{ ...formValues, checkbox: checked, ...errors }} // Altere getValues() para formValues
         />
         <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
           <Alert onClose={handleClose} severity="warning">

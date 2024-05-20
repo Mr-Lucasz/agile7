@@ -29,6 +29,7 @@ export function LottieButton({ onSubmit, formState }) {
   };
   const handleClick = async () => {
     // Check if all fields are filled
+    console.log(formState) 
     const emptyFields = Object.entries(formState)
         .filter(([key, val]) => val === "" || val === null || val === undefined)
         .map(([key]) => key);
