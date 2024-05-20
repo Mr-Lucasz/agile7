@@ -29,10 +29,10 @@ export function LottieButton({ onSubmit, formState }) {
   };
   const handleClick = async () => {
     // Check if all fields are filled
-    console.log(formState) 
+    console.log(formState);
     const emptyFields = Object.entries(formState)
-        .filter(([key, val]) => val === "" || val === null || val === undefined)
-        .map(([key]) => key);
+      .filter(([key, val]) => val === "" || val === null || val === undefined)
+      .map(([key]) => key);
 
     console.log("Empty fields:", emptyFields); // Print out the empty fields
 
@@ -67,8 +67,8 @@ export function LottieButton({ onSubmit, formState }) {
         isStopped={!isHovered} // A animação é interrompida se não estiver em hover
         isPaused={!isHovered} // A animação é pausada se não estiver em hover
       />
-      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-        <Alert onClose={handleClose} severity="warning">
+      <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
+        <Alert severity="warning">
           Por favor, preencha os seguintes campos: {missingFields.join(", ")}
         </Alert>
       </Snackbar>

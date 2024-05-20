@@ -22,6 +22,7 @@ export function FormCTA() {
   const formValues = watch();
   // Add state for checkbox
   const [checked, setChecked] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const onSubmit = async (data) => {
     // Check if data is defined and is an object
@@ -42,6 +43,7 @@ export function FormCTA() {
       }
     }
     await submitForm(data);
+    setIsSuccess(true); // Defina isSuccess como true após o envio bem-sucedido
     reset();
   };
 
@@ -158,11 +160,13 @@ export function FormCTA() {
             onSubmit={onSubmit}
             formState={{ ...formValues, checkbox: checked, ...errors }} // Altere getValues() para formValues
         />
-        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-          <Alert onClose={handleClose} severity="warning">
-            Por favor, preencha todos os campos e marque a caixa de seleção!
-          </Alert>
-        </Snackbar>
+        {isSuccess && (
+            <Snackbar open={isSuccess} autoHideDuration={6000} onClose={() => setIsSuccess(false)}>
+              <Alert onClose={() => setIsSuccess(false)} severity="success">
+                Formulário enviado com sucesso!
+              </Alert>
+            </Snackbar>
+        )}
       </form>
     </>
   );
