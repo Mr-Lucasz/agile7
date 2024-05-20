@@ -1,16 +1,13 @@
-// Service.js
 import axios from 'axios';
-import dotenv from 'dotenv';
 
-dotenv.config();
-
-const url = process.env.URL_MAIN;
+const apiUrl = process.env.REACT_APP_API_URL;
+console.log(apiUrl);
 
 export async function submitForm(data) {
-    try {
-        const response = await axios.post(`${url}/form`, data);
-        return response.data;
-    } catch (error) {
-        console.error(error);
-    }
+  try {
+    const response = await axios.post(`${apiUrl}/form`, data);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
 }

@@ -1,18 +1,8 @@
 import express from 'express';
+import { submitForm } from '../controllers/formController.js';
+
 const router = express.Router();
 
-router.get('/', (req, res) => {
-    res.send('Hello World!');
-});
-
-// Adicione mais rotas conforme necessário
-import { insertFormData } from './Database.js';
-
-router.post('/form', async (req, res) => {
-    const data = req.body;
-    await insertFormData(data);
-    res.status(200).send('Data inserted successfully');
-});
-
+router.post('/form', submitForm);
 
 export default router;
