@@ -60,7 +60,7 @@
 /* responsividade */
 @media (max-width: 768px) {
   .title {
-    font-size: 1.5em;
+    font-size: 1.25em;
   }
 }
 
@@ -188,4 +188,13 @@
 .icon:hover {
   transform: scale(1.2);
   transition: transform 0.5s;
+}
+/* responsividade */
+@media (max-width: 768px) {
+  .content{
+    font-size: 1rem;
+  }
+  .footerText{
+    font-size: 1rem;
+  }
 }

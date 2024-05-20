@@ -83,3 +83,23 @@
     height: auto;
     margin-left: 2rem;
 }
+
+.responsividade{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* .responsividade */
+@media (max-width: 768px) {
+    .responsividade{
+        display: flex;
+        flex-direction: row-reverse;
+    }
+    .navbar{
+        display:none;
+    }
+    .header{
+        gap: 1rem;
+    }
+}

@@ -17,7 +17,8 @@ export function Section3ForCustumers() {
       <div className={styles.overlayMain}>
         <div className={styles.overlay1}>
           <h1 className={styles.title}>
-            Estamos localizados aqui&#128205;Alto Vale do Itajaí - SC
+            Estamos localizados aqui&#128205;
+            <br/>Alto Vale do Itajaí - SC
           </h1>
           <Viewer
             style={{ width: "90%", height: "100%" }}
