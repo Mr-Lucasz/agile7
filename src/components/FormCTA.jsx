@@ -4,11 +4,10 @@ import TextField from "@mui/material/TextField";
 import { useState } from "react";
 // checkbox mui material
 import Checkbox from "@mui/material/Checkbox";
+// snackbar mui material
+import Snackbar from "@mui/material/Snackbar";
 
 export function FormCTA() {
-
-
-
   const textFieldStyles = {
     "& label.Mui-focused": {
       color: "white",
@@ -35,6 +34,7 @@ export function FormCTA() {
       },
     },
   };
+
 
   return (
     <>
@@ -89,18 +89,22 @@ export function FormCTA() {
             fullWidth
           />
         </div>
-        {/* <div className={styles.container4}>
-          <Checkbox color="primary"/>
+        <div className={styles.container4}>
+          <Checkbox
+            sx={{
+              color: "white",
+              "&.Mui-checked": {
+                color: "white",
+              },
+            }}
+          />
           <p>
-            Li e concordo com a{" "}
-            <a href="#" className={styles.link}>
-              Política de Privacidade
-            </a>{" "}
-            da AGILE7 TECH.
+            Eu concordo compartilhar esses dados para contato com a AGILE7 TECH.
           </p>
-        </div> */}
+        </div>
 
         <LottieButton />
+        
       </form>
     </>
   );

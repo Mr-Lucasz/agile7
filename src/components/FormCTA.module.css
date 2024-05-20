@@ -46,3 +46,10 @@
         width: 100%;
     }
 }
+
+.container4{
+    display: flex;
+    gap: 0.25rem;
+    width: 80%;
+    flex-direction: row;
+}
