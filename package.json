@@ -16,6 +16,7 @@
     "@emotion/styled": "^11.11.5",
     "@hookform/resolvers": "^3.4.0",
     "@mui/material": "^5.15.18",
+    "axios": "^1.7.1",
     "cesium": "^1.117.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
