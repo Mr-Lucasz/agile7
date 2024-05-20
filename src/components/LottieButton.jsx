@@ -28,18 +28,10 @@ export function LottieButton({ onSubmit, formState }) {
     setIsHovered(false);
   };
   const handleClick = async () => {
-    // Separate checkbox from other fields
-    const { checkbox, ...otherFields } = formState;
-
     // Check if all fields are filled
-    const emptyFields = Object.entries(otherFields)
-      .filter(([key, val]) => val === "")
-      .map(([key]) => key);
-
-    // Check if checkbox is checked
-    if (!checkbox) {
-      emptyFields.push("checkbox");
-    }
+    const emptyFields = Object.entries(formState)
+        .filter(([key, val]) => val === "" || val === null || val === undefined)
+        .map(([key]) => key);
 
     console.log("Empty fields:", emptyFields); // Print out the empty fields
 

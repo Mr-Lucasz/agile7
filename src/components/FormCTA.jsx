@@ -25,19 +25,25 @@ export function FormCTA() {
   const onSubmit = async (data) => {
     // Check if data is defined and is an object
     if (!data || typeof data !== "object") {
-
       return;
     }
-
     // Check if all fields are filled and checkbox is checked
     if (Object.values(data).includes("") || !checked) {
       setOpen(true);
       console.log("Please fill all fields and check the checkbox");
       return;
     }
+    // Check if any field is empty
+    for (let key in data) {
+      if (data[key] === "") {
+        console.log(`The field ${key} is empty. Please fill all fields.`);
+        return;
+      }
+    }
     await submitForm(data);
     reset();
   };
+
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
       return;
