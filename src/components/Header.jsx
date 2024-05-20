@@ -4,9 +4,10 @@ import Whatsapp from "../assets/Whatsapp.svg";
 
 export function Header() {
   const whatsappNumber = "5594981183574";
+  const whatsappMessage = "Olá, Agile7! Tenho um ideia para um projeto. Podemos conversar?";
 
   function openWhatsapp() {
-    window.open(`https://wa.me/${whatsappNumber}`, "_blank");
+    window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, "_blank");
     console.log("Whatsapp opened");
   }
 
