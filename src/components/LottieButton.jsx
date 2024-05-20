@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Lottie from 'react-lottie';
 import animationData from '../assets/Button.json'; // Caminho para o seu arquivo JSON
+import { submitForm } from '../server/Service';
 
 export function LottieButton() {
   const [isHovered, setIsHovered] = useState(false);
@@ -22,18 +23,24 @@ export function LottieButton() {
   const handleMouseLeave = () => {
     setIsHovered(false);
   };
+  const handleClick = async () => {
+    const data = {}; // Substitua isso pelos dados do formulário
+    await submitForm(data);
+  };
+
 
   return (
-    <div
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      style={{ width: '80%', height: 'auto', cursor: 'pointer'}}
-    >
-      <Lottie
-        options={defaultOptions}
-        isStopped={!isHovered} // A animação é interrompida se não estiver em hover
-        isPaused={!isHovered} // A animação é pausada se não estiver em hover
-      />
-    </div>
+      <div
+          onClick={handleClick}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          style={{ width: '80%', height: 'auto', cursor: 'pointer'}}
+      >
+        <Lottie
+            options={defaultOptions}
+            isStopped={!isHovered} // A animação é interrompida se não estiver em hover
+            isPaused={!isHovered} // A animação é pausada se não estiver em hover
+        />
+      </div>
   );
 }
