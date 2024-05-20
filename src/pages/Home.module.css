@@ -1,0 +1,34 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100vw;
+  padding-top: 4rem;
+
+
+}
+
+.mainContent {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+
+  margin-top: 0;
+  z-index: 2;
+  /* background: radial-gradient(at var(--mouse-x) var(--mouse-y), #00270942, rgb(25, 56, 0)); */
+  background-color: white;
+}
+
+.mainContent > section {
+  display: flex;
+  min-height: calc(100vh - 5rem);
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  scroll-margin-top: 4.5rem;
+  background: transparent;
+}

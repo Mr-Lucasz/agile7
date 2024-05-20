@@ -1,0 +1,85 @@
+@import url("https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap");
+.section1 {
+  display: flex;
+  flex-direction: row-reverse !important;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.video {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 25rem;
+  margin-bottom: -5rem;
+  border-radius: 2rem;
+  /* deixa video mais transparente e escuro */
+}
+
+.videoContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+
+  /* usar video a seguir com bakground video import backgroundVideo from "../../assets/backgroundVideo.mp4"; */
+  background: url("https://images.unsplash.com/photo-1612838320302-4b3b3b3b3b3b")
+    no-repeat center center/cover;
+}
+.videoContainer p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3.5rem;
+  /*usar font  arial black */
+  font-family: "Poetsen One", sans-serif;
+  font-weight: 700;
+  margin-top: -1rem;
+}
+
+.overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+.videoContainer a {
+  display: flex;
+  justify-content: center;
+  padding-left: 1.5rem;
+  align-items: center;
+  width: 100%;
+  padding-top: 8px;
+  height: 100%;
+  color: #ffffff56;
+  font-size: 1rem;
+  font-family: "Fenix", serif;
+  text-decoration: none;
+  transition: 0.5s;
+}
+
+.glitchText {
+  position: relative;
+  color: #0000004f;
+  transition: text-shadow 0.3s ease-in-out;
+}
+
+.glitchText:hover {
+  text-shadow: -2px 2px 0 rgba(2, 61, 0, 0.3), 2px -2px 0 rgba(2, 61, 0, 0.3),
+    -2px -2px 0 rgba(2, 61, 0, 0.3), 1px 1px 0 rgb(2, 61, 0);
+  /* scale */
+  transform: scale(1.1);
+}
+
+.title {
+  font-size: 2.5rem;
+  text-align: center;
+  color: rgb(25, 56, 0);
+  font-weight: 700;
+  font-family: "Poetsen One", sans-serif;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}

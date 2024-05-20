@@ -1,0 +1,27 @@
+.formCta{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1rem;
+    max-width: 700px;
+    height: 50rem;   
+    border-radius: 1rem;
+    border: solid 1px #3333335b;
+    padding: 1rem;
+    background: radial-gradient(at var(--mouse-x) var(--mouse-y),#1a0f02, rgb(22, 49, 0), #050300);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    box-sizing: border-box;
+    margin:1rem;
+    gap : 1rem;
+    color: white;
+}
+
+.container1, .container2, .container3{
+    display: flex;
+    gap: 1rem;
+    width: 80%;
+}

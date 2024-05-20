@@ -1,0 +1,41 @@
+@import url("https://fonts.googleapis.com/css2?family=Fenix&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap");
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  /* smooth */
+  scroll-behavior: smooth;
+  --mouse-x: 0;
+  --mouse-y: 0;
+  --mouse-speed: 0.1s;
+
+}
+
+
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+li {
+  float: left;
+}
+
+@media screen and (max-width: 600px) {
+  ul {
+    flex-direction: column;
+  }
+}

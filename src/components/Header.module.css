@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Titan+One&display=swap');
+
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+ /* efeito blur */
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    height: 4.5rem;
+    display: flex;  
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    background: radial-gradient(at var(--mouse-x) var(--mouse-y),#1a0f02, rgb(22, 49, 0), #050300);
+
+    
+}
+
+/*#00270942 */
+
+
+.header nav a {
+
+    color: white;
+    text-decoration: none;
+    font-size: 1.25rem;
+    padding: 1rem;
+    font-weight: 700;
+}
+
+.header nav a:hover {
+    color: #022c00;
+   text-shadow: -1px 1px 0 rgb(255, 255, 255), 1px -1px 0 rgb(255, 255, 255),
+    -1px -1px 0 rgb(255, 255, 255), 1px 1px 0 rgb(255, 255, 255);
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Titan One", sans-serif;
+    margin-right: 2rem;
+    background: white;
+    color: #1a0f02;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.button:hover{
+    background: radial-gradient(at var(--mouse-x) var(--mouse-y),#1a0f02, rgb(22, 49, 0), #050300);
+    color: white;
+    transition: 0.5s;
+    /* animação */
+    animation: shake 0.5s;
+    border: white solid 2px;
+
+}
