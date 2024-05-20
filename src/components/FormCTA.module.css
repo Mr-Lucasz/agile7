@@ -21,7 +21,9 @@
 }
 
 .formCta:hover{
-transform: scale(1.1);
+    background: radial-gradient(at var(--mouse-x) var(--mouse-y),#1a0f02, rgb(22, 49, 0), #050300);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
 }
 
 
@@ -29,4 +31,17 @@ transform: scale(1.1);
     display: flex;
     gap: 1rem;
     width: 80%;
+}
+
+/* responsividade */
+@media (max-width: 768px) {
+    .formCta{
+        height: 100%;
+    }
+    .container1, .container2, .container3{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+    }
 }

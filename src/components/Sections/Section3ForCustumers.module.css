@@ -7,6 +7,16 @@
     100vh - 5rem
   ); /* Altura mínima para garantir que o footer possa ficar na parte inferior */
 }
+
+@media (max-width: 768px) {
+  .overlayMain{
+      display: flex;
+      flex-direction: column!important;
+      justify-content: center;
+      align-items: center;
+  }
+}
+
 .overlayMain {
   display: flex;
   justify-content: center;
@@ -47,6 +57,13 @@
   text-align: center;
 }
 
+/* responsividade */
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.5em;
+  }
+}
+
 .title:hover {
   color: #000000;
 }
@@ -56,6 +73,14 @@
   line-height: 1;
   color: #666;
 }
+
+/* responsividade */
+@media (max-width: 768px) {
+  .content {
+    font-size: 1em;
+  }
+}
+
 
 .bold {
   font-weight: bold;
@@ -85,11 +110,17 @@
     rgb(22, 49, 0),
     #050300
   );
-  font-family: "Fenix", serif;
+  font-family: "Fenix", sans-serif;
   font-weight: 700;
   font-size: 2rem;
   font-family: "Poetsen One", sans-serif;
   margin-top: auto; /* Isso empurrará o footer para a parte inferior da seção */
+}
+/* responsividade */
+@media (max-width: 768px) {
+  .footer {
+    font-size: 1.5rem;
+  }
 }
 
 .glitchText {
@@ -97,6 +128,7 @@
   color: #c7c7c7;
   transition: text-shadow 0.5s ease-in-out;
 }
+
 
 .glitchText:hover {
   text-shadow: -2px 2px 0 rgba(2, 61, 0, 0.3), 2px -2px 0 rgba(2, 61, 0, 0.3),
@@ -110,6 +142,12 @@
   width: 3.5rem;
   height: auto;
   margin: 0.5rem;
+}
+/* responsividade */
+@media (max-width: 768px) {
+  .logo {
+    width: 3rem;
+  }
 }
 
 .logo:hover {

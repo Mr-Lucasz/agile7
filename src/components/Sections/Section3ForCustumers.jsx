@@ -10,7 +10,7 @@ import gmail from "../../assets/icons8-gmail.svg";
 export function Section3ForCustumers() {
   // Latitude: 27°03'2
   // Longitude: 49°31'0
-  const ibiramaPosition = Cartesian3.fromDegrees(-49.6435, -27.2145, 5000); // Longitude, Latitude, Altitude
+  const ibiramaPosition = Cartesian3.fromDegrees(-49.6435, -27.2145, 5000); // Longitude, Latitude, Altitud
 
   return (
     <section id="section3" className={styles.section3}>
@@ -32,7 +32,12 @@ export function Section3ForCustumers() {
           >
             <CameraFlyTo destination={ibiramaPosition} duration={2} />
           </Viewer>
-          <a className="cesium-credit-logo" href="https://cesium.com/" target="_blank" rel="noreferrer">
+          <a
+            className="cesium-credit-logo"
+            href="https://cesium.com/"
+            target="_blank"
+            rel="noreferrer"
+          >
             Interaja com o mapa
           </a>
         </div>
@@ -77,7 +82,7 @@ export function Section3ForCustumers() {
         <div className={styles.footerContentContacts}>
           {/* icones com link instagram linkedin, whatsapp */}
           <a
-            href="https://www.instagram.com/agile7tech/"
+            href="https://www.instagram.com/agile_solution7/"
             target="_blank"
             rel="noreferrer"
           >
@@ -88,7 +93,7 @@ export function Section3ForCustumers() {
             />
           </a>
           <a
-            href="https://api.whatsapp.com/send?phone=5547999999999"
+            href="https://wa.me/5594981183574?text=Olá, Agile7! Tenho um ideia para um projeto. Podemos conversar?"
             target="_blank"
             rel="noreferrer"
           >
@@ -99,7 +104,11 @@ export function Section3ForCustumers() {
             />
           </a>
           <a
-            href="mailto:l.cunha14.lc@gmail.com"
+            href="mailto:l.cunha14.lc@gmail.com?subject= Interesse de Projeto - Orçamento - Dúvida - Sugestão&body=DESCREVA AQUI SUA MENSAGEM"
+            // assunto - Interesse de Projeto - Orçamento - Dúvida - Sugestão
+            // corpo - Nome - Empresa - Telefone - Email - Mensagem
+            //
+
             target="_blank"
             rel="noreferrer"
           >
