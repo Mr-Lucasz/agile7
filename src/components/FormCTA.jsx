@@ -36,7 +36,7 @@ export function FormCTA() {
   return (
     <>
     <form className={styles.formCta}>
-      <h2>Entre em contato com a AGILE SOLUTION7.</h2>
+      <h2>Entre em contato com a AGILE7 TECH.</h2>
       <p>Deixe suas informações e retornaremos o mais breve possível.</p>
 
       <div className={styles.container1}>

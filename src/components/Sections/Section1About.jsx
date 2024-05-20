@@ -22,7 +22,7 @@ export function Section1About() {
               1000,
               'DESCUBRA NOSSOS PRODUTOS',
               1000,
-              'CONHEÇA A AGILE PIOONERS7',
+              'CONHEÇA A AGILE7 TECH',
               1000,
               'ENTRE EM CONTATO!',
               1000

@@ -47,7 +47,7 @@
 }
 
 .title:hover {
-  color: #1f1e1e;
+  color: #000000;
 }
 
 .content {
@@ -99,3 +99,9 @@
     transform: scale(1.1);
     color: #fff;
   }
+
+  .logo{
+    width: 4.25rem;
+    height: auto;
+    margin-left: 2rem;
+}

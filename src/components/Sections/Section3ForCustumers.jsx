@@ -1,16 +1,19 @@
 import styles from "./Section3ForCustumers.module.css";
 import { Viewer, CameraFlyTo } from "resium";
 import { Cartesian3 } from "cesium";
+import Agile_Solutions from "../../assets/Agile_Solutions.svg";
 
 export function Section3ForCustumers() {
   // Latitude: 27°03'2
   // Longitude: 49°31'0
-  const ibiramaPosition = Cartesian3.fromDegrees(-49.5193, -27.0542, 1200); // Longitude, Latitude, Altitude
+  const ibiramaPosition = Cartesian3.fromDegrees(-49.6435,  -27.2145, 5000); // Longitude, Latitude, Altitude
 
   return (
     <section id="section3" className={styles.section3}>
       <div className={styles.overlayMain}>
         <div className={styles.overlay1}>
+        <h1 className={styles.title}>Estamos localizados aqui&#128205;Alto Vale do Itajaí - SC
+</h1>
           <Viewer
             style={{ width: "90%", height: "100%" }}
             timeline={false}
@@ -56,6 +59,7 @@ export function Section3ForCustumers() {
 
       <footer className={styles.footer}>
         <p className={styles.glitchText}>Agile7 Tech</p>
+        <img className={styles.logo} src={Agile_Solutions} alt="Agile7 Tech" />
       </footer>
     </section>
   );

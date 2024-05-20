@@ -70,3 +70,9 @@
     border: white solid 2px;
 
 }
+
+.logo img{
+    width: 4.25rem;
+    height: auto;
+    margin-left: 2rem;
+}
