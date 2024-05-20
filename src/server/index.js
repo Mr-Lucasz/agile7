@@ -6,11 +6,9 @@ import { run } from './Database.js';
 const app = express();
 const port = process.env.PORT || 3000; // Use a porta do ambiente ou 3000 como fallback
 
-app.use(cors({
-  origin: 'https://agile7tech.com.br' // Substitua com seu domínio de produção
-}));
+app.use(cors({ origin: '*' }));
 app.use(express.json());
-app.use('/form', formRoutes);
+app.use('/api/form', formRoutes);
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
