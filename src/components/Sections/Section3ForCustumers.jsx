@@ -83,15 +83,21 @@ export function Section3ForCustumers() {
         <div className={styles.footerContentContacts}>
           {/* icones com link instagram linkedin, whatsapp */}
           <a
-            href="https://www.instagram.com/agile_solution7/"
+            href="https://www.instagram.com/agile7_tech/"
             target="_blank"
             rel="noreferrer"
           >
+            {/* como add tooltip: */}
+
+
+
             <img
               className={styles.icon}
               src={Instagram}
               alt="Instagram Agile7 Tech"
+
             />
+
           </a>
           <a
             href="https://wa.me/5594981183574?text=Olá, Agile7! Tenho um ideia para um projeto. Podemos conversar?"
