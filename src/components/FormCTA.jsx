@@ -1,13 +1,58 @@
+// FormCTA.jsx
 import { LottieButton } from "./LottieButton";
 import styles from "./FormCTA.module.css";
 import TextField from "@mui/material/TextField";
 import { useState } from "react";
-// checkbox mui material
 import Checkbox from "@mui/material/Checkbox";
+import Snackbar from "@mui/material/Snackbar";
+import Alert from "@mui/material/Alert";
+import { submitForm } from "../server/Service";
+import { useForm } from "react-hook-form";
 
 export function FormCTA() {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+    watch,
+  } = useForm();
 
+  const [open, setOpen] = useState(false);
+  const formValues = watch();
+  // Add state for checkbox
+  const [checked, setChecked] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
+  const onSubmit = async (data) => {
+    // Check if data is defined and is an object
+    if (!data || typeof data !== "object") {
+      return;
+    }
+    // Check if all fields are filled and checkbox is checked
+    if (Object.values(data).includes("") || !checked) {
+      setOpen(true);
+      console.log("Please fill all fields and check the checkbox");
+      return;
+    }
+    // Check if any field is empty
+    for (let key in data) {
+      if (data[key] === "") {
+        console.log(`The field ${key} is empty. Please fill all fields.`);
+        return;
+      }
+    }
+    await submitForm(data);
+    setIsSuccess(true); // Defina isSuccess como true após o envio bem-sucedido
+    reset();
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpen(false);
+  };
 
   const textFieldStyles = {
     "& label.Mui-focused": {
@@ -38,12 +83,13 @@ export function FormCTA() {
 
   return (
     <>
-      <form className={styles.formCta}>
+      <form className={styles.formCta} onSubmit={handleSubmit(onSubmit)}>
         <h2>Entre em contato com a AGILE7 TECH.</h2>
         <p>Deixe suas informações e retornaremos o mais breve possível.</p>
 
         <div className={styles.container1}>
           <TextField
+            {...register("nome", { required: true })}
             sx={textFieldStyles}
             id="outlined-basic"
             label="Nome"
@@ -52,6 +98,7 @@ export function FormCTA() {
             fullWidth
           />
           <TextField
+            {...register("email", { required: true })}
             sx={textFieldStyles}
             id="outlined-basic"
             label="Email"
@@ -62,6 +109,7 @@ export function FormCTA() {
         </div>
         <div className={styles.container2}>
           <TextField
+            {...register("telefone", { required: true })}
             sx={textFieldStyles}
             id="outlined-basic"
             label="Telefone"
@@ -70,6 +118,7 @@ export function FormCTA() {
             fullWidth
           />
           <TextField
+            {...register("empresa", { required: true })}
             sx={textFieldStyles}
             id="outlined-basic"
             label="Empresa"
@@ -80,6 +129,7 @@ export function FormCTA() {
         </div>
         <div className={styles.container3}>
           <TextField
+            {...register("mensagem", { required: true })}
             sx={textFieldStyles}
             id="outlined-multiline-static"
             label="Nos fale mais sobre o seu negócio."
@@ -89,18 +139,34 @@ export function FormCTA() {
             fullWidth
           />
         </div>
-        {/* <div className={styles.container4}>
-          <Checkbox color="primary"/>
+        <div className={styles.container4}>
+          <Checkbox
+            {...register("checkbox", { required: true })}
+            checked={checked}
+            onChange={(e) => setChecked(e.target.checked)}
+            sx={{
+              color: "white",
+              "&.Mui-checked": {
+                color: "white",
+              },
+            }}
+          />
           <p>
-            Li e concordo com a{" "}
-            <a href="#" className={styles.link}>
-              Política de Privacidade
-            </a>{" "}
-            da AGILE7 TECH.
+            Eu concordo compartilhar esses dados para contato com a AGILE7 TECH.
           </p>
-        </div> */}
+        </div>
 
-        <LottieButton />
+        <LottieButton
+            onSubmit={onSubmit}
+            formState={{ ...formValues, checkbox: checked, ...errors }} // Altere getValues() para formValues
+        />
+        {isSuccess && (
+            <Snackbar open={isSuccess} autoHideDuration={6000} onClose={() => setIsSuccess(false)}>
+              <Alert onClose={() => setIsSuccess(false)} severity="success">
+                Formulário enviado com sucesso!
+              </Alert>
+            </Snackbar>
+        )}
       </form>
     </>
   );
