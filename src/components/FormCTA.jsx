@@ -2,42 +2,12 @@ import { LottieButton } from "./LottieButton";
 import styles from "./FormCTA.module.css";
 import TextField from "@mui/material/TextField";
 import { useState } from "react";
-import Modal from "@mui/material/Modal";
-import Box from "@mui/material/Box";
+// checkbox mui material
+import Checkbox from "@mui/material/Checkbox";
 
 export function FormCTA() {
-  const [modalIsOpen, setIsOpen] = useState(false);
 
-  function clickOpenModalSendForm() {
-    setIsOpen(true);
-    console.log("Modal de envio de formulário aberto");
-  }
 
-  function clickCloseModalSendForm() {
-    setIsOpen(false);
-    console.log("Modal de envio de formulário fechado");
-  }
-  
-
-  const modalBody = (
-    <Box
-      sx={{
-        position: "absolute",
-        top: "50%",
-        left: "50%",
-        transform: "translate(-50%, -50%)",
-        width: 400,
-        bgcolor: "background.paper",
-        border: "2px solid #000",
-        boxShadow: 24,
-        p: 4,
-      }}
-    >
-      <h2>Modal Title</h2>
-      <p>Modal Content</p>
-      <button onClick={clickCloseModalSendForm}>Close</button>
-    </Box>
-  );
 
   const textFieldStyles = {
     "& label.Mui-focused": {
@@ -119,17 +89,19 @@ export function FormCTA() {
             fullWidth
           />
         </div>
+        <div className={styles.container4}>
+          <Checkbox color="primary"/>
+          <p>
+            Li e concordo com a{" "}
+            <a href="#" className={styles.link}>
+              Política de Privacidade
+            </a>{" "}
+            da AGILE7 TECH.
+          </p>
+        </div>
 
         <LottieButton />
       </form>
-      <Modal
-        open={modalIsOpen}
-        onClose={clickCloseModalSendForm}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        {modalBody}
-      </Modal>
     </>
   );
 }

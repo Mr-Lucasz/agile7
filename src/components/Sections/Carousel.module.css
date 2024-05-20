@@ -51,3 +51,11 @@
   .active {
     background-color: #0c6600;
   }
+
+  @media (max-width: 768px) {
+    .dot {
+      width: 10px;
+      height: 10px;
+    }
+
+  }
