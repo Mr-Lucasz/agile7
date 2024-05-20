@@ -11,7 +11,7 @@ export function Section1About() {
           <FormCTA />
         </div>
         <div className={styles.videoContainer}>
-          <img src={logovideo} alt="Agile7 Tech" className={styles.video}/>
+          <img src={logovideo} alt="Gif animado da Logotipo da Agile7 Tech" className={styles.video}/>
      
           <TypeAnimation
             className={styles.title}
