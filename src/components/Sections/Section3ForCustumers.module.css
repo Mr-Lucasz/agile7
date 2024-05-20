@@ -32,7 +32,7 @@
 .overlay2{
     border-radius: 10px;
     padding: 1rem;
-    width: 70%;
+    width: 90%;
     text-align: justify;
     padding-right: 2rem;
     box-sizing: border-box;
@@ -40,16 +40,30 @@
     font-size: 1.25rem;
 }
 
-.overlay2 b{
-    color: #226d00;
+.title {
+  font-size: 2em;
+  color: #4a4a4a;
+  text-align: center;
 }
 
-.overlay2 b:hover{
-    color: #ff0000;
-    text-decoration: solid underline;
-    transform: scale(1.1);
+.title:hover {
+  color: #1f1e1e;
 }
 
+.content {
+  font-size: 1.2em;
+  line-height: 1;
+  color: #666;
+}
+
+.bold {
+  font-weight: bold;
+  color: #333;
+}
+
+.bold:hover {
+  color: #000;
+}
 
 
 /* Certifique-se de que o footer fique na parte inferior da seção */
@@ -74,7 +88,7 @@
 
 .glitchText {
     position: relative;
-    color: #e9e9e9;
+    color: #c7c7c7;
     transition: text-shadow 0.5s ease-in-out;
   }
   
@@ -83,4 +97,5 @@
       -2px -2px 0 rgba(2, 61, 0, 0.3), 1px 1px 0 rgb(2, 61, 0);
     /* scale */
     transform: scale(1.1);
+    color: #fff;
   }

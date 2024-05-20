@@ -55,7 +55,7 @@ export function Section2Service() {
 
       <Carousel images={images} />
       <p className={styles.legend}>
-      Um site é essencial para desvendar o potencial do seu negócio.<br/> Com a <b>AGILE SOLUTIONS</b>, você está equipado para vencer.
+      Um site é essencial para desvendar o potencial do seu negócio.<br/> Com a <b>AGILE7 TECH</b>, você está equipado para vencer.
       </p>
         </div>
         <div className={styles.overlay2}>

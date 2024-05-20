@@ -26,30 +26,36 @@ export function Section3ForCustumers() {
           </Viewer>
         </div>
         <div className={styles.overlay2}>
-          <h1>Agile7Tech</h1>
-          <p>
-            Bem vindo a Agile7 Tech, sua parceira de soluções de software
-            inovadores e de muita qualidade. Com menos de 3 meses no mercado,
-            nossa empresa já se destaca no segmento de desenvolvimento de
-            software, oferencendo um difencial único: o Foco total em Qualidade,
-            Engenharia de Software e inovação. Localizada em Santa Catarina -
-            Brasil, mas com alcance global, estamos prontos para atender ás
-            necessidade de empresas de todos os tamanhos, segmentos e
-            localizações. Na Agile7 Tech, acreditamos que a tecnologia é a chave
-            para o sucesso de qualquer empresa, e por isso, estamos sempre em
-            busca de novas tecnologias, metodologias e práticas de mercado para
-            oferecer o melhor para nossos clientes.
+          <h1 className={styles.title}>🚀 Agile7 Tech</h1>
+          <p className={styles.content}>
+            <span className={styles.bold}>Seja bem-vindo à Agile7 Tech,</span> a
+            sua parceira em soluções de software inovadoras e de alta qualidade.
+            Apesar de termos menos de 3 meses de mercado, já nos destacamos no
+            segmento de desenvolvimento de software, graças ao nosso
+            diferencial: um foco inabalável em Qualidade, Engenharia de Software
+            e Inovação. 🎯
             <br />
-            <b>
-              Entre em contato conosco e descubra como a Agile7 Tech pode ajudar
-              a sua empresa a crescer e se destacar no mercado.
-            </b>
+            <br />
+            Baseados em Santa Catarina, Brasil, mas com um alcance global,
+            estamos prontos para atender às necessidades de empresas de todos os
+            tamanhos, segmentos e localizações. 🌎 Na Agile7 Tech, acreditamos
+            firmemente que a tecnologia é a chave para o sucesso de qualquer
+            empresa. Por isso, estamos sempre em busca das últimas tecnologias,
+            metodologias e práticas de mercado para oferecer o melhor aos nossos
+            clientes. 💡
+            <br />
+            <br />
+            <span className={styles.bold}>
+              Entre em contato conosco e descubra como a Agile7 Tech pode
+              impulsionar o crescimento da sua empresa e ajudá-la a se destacar
+              no mercado. 🚀
+            </span>
           </p>
         </div>
       </div>
 
       <footer className={styles.footer}>
-        <p className={styles.glitchText}>Agile Pioneers7</p>
+        <p className={styles.glitchText}>Agile7 Tech</p>
       </footer>
     </section>
   );

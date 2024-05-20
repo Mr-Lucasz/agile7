@@ -42,3 +42,7 @@ width: 70%;
     margin-bottom: 2rem;
     margin-top: 2rem;
   }
+
+  .legend b{
+    color: rgb(25, 56, 0);
+  }
