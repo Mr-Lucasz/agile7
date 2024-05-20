@@ -1,5 +1,5 @@
 import styles from "./Section1About.module.css";
-import logovideo from "../../assets/logovideo.mp4";
+import logovideo from "../../assets/logovideo.gif";
 import { TypeAnimation } from "react-type-animation";
 import { FormCTA } from "../FormCTA";
 
@@ -11,9 +11,7 @@ export function Section1About() {
           <FormCTA />
         </div>
         <div className={styles.videoContainer}>
-          <video autoPlay loop muted className={styles.video}>
-            <source src={logovideo} type="video/mp4" />
-          </video>
+          <img src={logovideo} alt="Agile7 Tech" className={styles.video}/>
      
           <TypeAnimation
             className={styles.title}
