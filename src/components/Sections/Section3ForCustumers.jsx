@@ -2,18 +2,23 @@ import styles from "./Section3ForCustumers.module.css";
 import { Viewer, CameraFlyTo } from "resium";
 import { Cartesian3 } from "cesium";
 import Agile_Solutions from "../../assets/Agile_Solutions.svg";
+import Instagram from "../../assets/Instagram.svg";
+import Whatsapp from "../../assets/Whatsapp.svg";
+import gmail from "../../assets/icons8-gmail.svg";
+import Lottie from "react-lottie";
 
 export function Section3ForCustumers() {
   // Latitude: 27°03'2
   // Longitude: 49°31'0
-  const ibiramaPosition = Cartesian3.fromDegrees(-49.6435,  -27.2145, 5000); // Longitude, Latitude, Altitude
+  const ibiramaPosition = Cartesian3.fromDegrees(-49.6435, -27.2145, 5000); // Longitude, Latitude, Altitude
 
   return (
     <section id="section3" className={styles.section3}>
       <div className={styles.overlayMain}>
         <div className={styles.overlay1}>
-        <h1 className={styles.title}>Estamos localizados aqui&#128205;Alto Vale do Itajaí - SC
-</h1>
+          <h1 className={styles.title}>
+            Estamos localizados aqui&#128205;Alto Vale do Itajaí - SC
+          </h1>
           <Viewer
             style={{ width: "90%", height: "100%" }}
             timeline={false}
@@ -27,6 +32,9 @@ export function Section3ForCustumers() {
           >
             <CameraFlyTo destination={ibiramaPosition} duration={2} />
           </Viewer>
+          <a className="cesium-credit-logo" href="https://cesium.com/" target="_blank" rel="noreferrer">
+            Interaja com o mapa
+          </a>
         </div>
         <div className={styles.overlay2}>
           <h1 className={styles.title}>🚀 Agile7 Tech</h1>
@@ -58,8 +66,51 @@ export function Section3ForCustumers() {
       </div>
 
       <footer className={styles.footer}>
-        <p className={styles.glitchText}>Agile7 Tech</p>
-        <img className={styles.logo} src={Agile_Solutions} alt="Agile7 Tech" />
+        <div className={styles.footerContent1}>
+          <p className={styles.glitchText}>Agile7 Tech</p>
+          <img
+            className={styles.logo}
+            src={Agile_Solutions}
+            alt="Agile7 Tech"
+          />
+        </div>
+        <div className={styles.footerContentContacts}>
+          {/* icones com link instagram linkedin, whatsapp */}
+          <a
+            href="https://www.instagram.com/agile7tech/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <img
+              className={styles.icon}
+              src={Instagram}
+              alt="Instagram Agile7 Tech"
+            />
+          </a>
+          <a
+            href="https://api.whatsapp.com/send?phone=5547999999999"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <img
+              className={styles.icon}
+              src={Whatsapp}
+              alt="Whatsapp Agile7 Tech"
+            />
+          </a>
+          <a
+            href="mailto:l.cunha14.lc@gmail.com"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <img className={styles.icon} src={gmail} alt="Gmail Agile7 Tech" />
+          </a>
+        </div>
+        <div className={styles.footerContent3}>
+          <p className={styles.footerText}>
+            © 2024 Agile7 Tech. Todos os direitos reservados.
+          </p>
+        </div>
       </footer>
     </section>
   );

@@ -1,5 +1,6 @@
 import styles from './Header.module.css'
 import Agile_Solutions from '../assets/Agile_Solutions.svg'
+import Whatsapp from '../assets/Whatsapp.svg'
 
 export function Header () {
 
@@ -16,7 +17,9 @@ export function Header () {
                     <li><a href="#section3">Para Clientes</a></li>
                 </ul>
             </nav>
-            <button className={styles.button}>CONTATOS</button>
+            <button className={styles.button}>CONTATO
+            <img src={Whatsapp} alt="Whatsapp" />
+            </button>
         </header>
     )
 }

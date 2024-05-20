@@ -59,6 +59,13 @@
     font-size: 1rem;
     font-weight: 700;
     cursor: pointer;
+    transition: 0.5s;
+    /* animação */
+    animation: shake 0.5s;
+    border: white solid 2px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    gap:0.5rem;
 }
 
 .button:hover{
