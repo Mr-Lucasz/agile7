@@ -6,7 +6,7 @@ import { useState } from "react";
 import Checkbox from "@mui/material/Checkbox";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
-import { submitForm } from "../server/Service";
+import axios from "axios";
 import { useForm } from "react-hook-form";
 
 export function FormCTA() {
@@ -42,11 +42,16 @@ export function FormCTA() {
         return;
       }
     }
-    await submitForm(data);
-    setIsSuccess(true); // Defina isSuccess como true após o envio bem-sucedido
-    reset();
+    // Make a POST request to the backend API
+    try {
+      const response = await axios.post('http://localhost:3000/api/form', data);
+      console.log(response.data);
+      setIsSuccess(true); // Set isSuccess to true after successful submission
+      reset();
+    } catch (error) {
+      console.error(`Error: ${error}`);
+    }
   };
-
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
       return;
