@@ -136,7 +136,12 @@ export function FormCTA() {
         <div className={styles.container3}>
           <TextField
             {...register("mensagem", { required: true })}
-            sx={textFieldStyles}
+            sx={{
+              ...textFieldStyles,
+              '& .MuiInputBase-input': {
+                color: 'white', // Adicione esta linha
+              },
+            }}
             id="outlined-multiline-static"
             label="Nos fale mais sobre o seu negócio."
             multiline
