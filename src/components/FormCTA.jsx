@@ -8,7 +8,7 @@ import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
 import axios from "axios";
 import { useForm } from "react-hook-form";
-
+import { URL_BACKEND } from "../config";
 export function FormCTA() {
   const {
     register,
@@ -44,7 +44,8 @@ export function FormCTA() {
     }
     // Make a POST request to the backend API
     try {
-      const response = await axios.post('http://localhost:3000/api/form', data);
+      console.log(URL_BACKEND);
+      const response = await axios.post(URL_BACKEND, data);
       console.log(response.data);
       setIsSuccess(true); // Set isSuccess to true after successful submission
       reset();
