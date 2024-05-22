@@ -35,7 +35,7 @@
 .title {
     font-size: 2.5rem;
     text-align: center;
-    color: rgb(25, 56, 0);
+    color: rgb(255, 255, 255);
     font-weight: 700;
     font-family: "Poetsen One", sans-serif;
     margin-bottom: 2rem;
@@ -56,14 +56,14 @@
   .legend {
     width: 70%;
     text-align: center;
-    color: rgb(0, 0, 0);
+    color: rgb(247, 247, 247);
     margin-bottom: 2rem;
     margin-top: 2rem;
     font-size: 1.25em;
-    color: #4a4a4a;
     text-align: center;
   }
 
   .legend b{
-    color: rgb(25, 56, 0);
+    color: rgb(66, 146, 0);
+    
   }

@@ -82,12 +82,14 @@
 
 .glitchText {
   position: relative;
-  color: #0000004f;
+  color: #e4e4e4;
   transition: text-shadow 0.3s ease-in-out;
   text-align: center;
 }
 
 .glitchText:hover {
+  color: #ffffff70;
+  
   text-shadow: -2px 2px 0 rgba(2, 61, 0, 0.3), 2px -2px 0 rgba(2, 61, 0, 0.3),
     -2px -2px 0 rgba(2, 61, 0, 0.3), 1px 1px 0 rgb(2, 61, 0);
   /* scale */
@@ -99,6 +101,8 @@
   font-size: 2.5rem;
   text-align: center;
   color: rgb(25, 56, 0);
+  text-shadow: 1px 1px 0 rgb(255, 255, 255), 1px -1px 0 rgb(255, 255, 255),
+    -1px -1px 0 rgb(252, 253, 252), 1px 1px 0 rgb(255, 255, 255);
   font-weight: 700;
   font-family: "Poetsen One", sans-serif;
   margin-bottom: 2rem;

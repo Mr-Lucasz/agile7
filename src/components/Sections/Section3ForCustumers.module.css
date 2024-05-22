@@ -40,6 +40,16 @@
   height: 100%;
 }
 
+.overlay1 div {
+border-radius: 1.5rem;
+}
+.cesium-credit-logo{
+  color: white;
+}
+.cesium-credit-logo:hover{
+  color: #f7d9d9;
+}
+
 .overlay2 {
   border-radius: 10px;
   padding: 1rem;
@@ -53,7 +63,7 @@
 
 .title {
   font-size: 2em;
-  color: #4a4a4a;
+  color: #ffffff;
   text-align: center;
 }
 
@@ -65,13 +75,13 @@
 }
 
 .title:hover {
-  color: #000000;
+  color: #ffcbcb;
 }
 
 .content {
   font-size: 1.2em;
   line-height: 1;
-  color: #666;
+  color: #838383;
 }
 
 /* responsividade */
@@ -84,11 +94,11 @@
 
 .bold {
   font-weight: bold;
-  color: #333;
+  color: #ffffff;
 }
 
 .bold:hover {
-  color: #000;
+  color: #ffdddd;
 }
 
 /* Certifique-se de que o footer fique na parte inferior da seção */
@@ -106,15 +116,16 @@
   /* linear gradiente background-color: #2318155d; */
   background: radial-gradient(
     at var(--mouse-x) var(--mouse-y),
-    #1a0f02,
-    rgb(22, 49, 0),
-    #050300
+    #1a0f026b,
+    rgba(22, 49, 0, 0.425),
+    #05030073
   );
   font-family: "Fenix", sans-serif;
   font-weight: 700;
   font-size: 2rem;
   font-family: "Poetsen One", sans-serif;
   margin-top: auto; /* Isso empurrará o footer para a parte inferior da seção */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.158);
 }
 /* responsividade */
 @media (max-width: 768px) {
@@ -125,7 +136,7 @@
 
 .glitchText {
   position: relative;
-  color: #c7c7c7;
+  color: #ffffff;
   transition: text-shadow 0.5s ease-in-out;
 }
 
@@ -146,7 +157,8 @@
 /* responsividade */
 @media (max-width: 768px) {
   .logo {
-    width: 3rem;
+    width: 2.5rem;
+    margin-bottom:0.75rem;
   }
 }
 
@@ -172,6 +184,12 @@
   margin-bottom: -2rem;
   padding: 0.75rem;
   box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .footerContentContacts {
+   width: 1rem!important;
+  }
 }
 
 .footerText{

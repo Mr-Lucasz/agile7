@@ -13,13 +13,14 @@
   --mouse-x: 0;
   --mouse-y: 0;
   --mouse-speed: 0.1s;
-
+  background-color: rgb(4, 14, 8);
 }
 
 /* responsividade overflow x hidden*/
 @media screen and (max-width: 1024px)  { 
  body { 
    overflow-x: hidden; 
+
    }
 }
 

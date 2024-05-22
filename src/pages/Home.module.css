@@ -5,7 +5,6 @@
   width: 100vw;
   padding-top: 4rem;
 
-
 }
 
 .mainContent {
@@ -18,8 +17,7 @@
   width: 100%;
   margin-top: 0;
   z-index: 2;
-  /* background: radial-gradient(at var(--mouse-x) var(--mouse-y), #00270942, rgb(25, 56, 0)); */
-  background-color: white;
+
 }
 
 .mainContent > section {
