@@ -5,8 +5,12 @@ import {Section2Service} from "../components/Sections/Section2Service.jsx";
 import {Section3ForCustumers} from "../components/Sections/Section3ForCustumers.jsx";
 import styles from "./Home.module.css";
 import { FloatingWhatsApp } from 'react-floating-whatsapp'
+import { useMediaQuery } from 'react-responsive';
 
 export function Home() {
+
+    const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
+
     return (
         <div className={styles.page}>
             <Header/>
@@ -23,7 +27,9 @@ export function Home() {
                 darkMode={true}
                 size={30}
                 backgroundColor="#25d366"
-                styles={{right: 10}}
+                styles={{
+                    right: isMobile ? 1 : 10,
+                }}
 
             
             />
