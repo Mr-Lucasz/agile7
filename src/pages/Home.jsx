@@ -28,7 +28,7 @@ export function Home() {
                 size={30}
                 backgroundColor="#25d366"
                 styles={{
-                    right: isMobile ? 1 : 10,
+                    right: isMobile ? 0 : 10,
                 }}
 
             
