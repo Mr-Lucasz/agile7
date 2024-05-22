@@ -10,7 +10,7 @@
     padding: 0 1rem;
     box-sizing: border-box;
     gap: 1rem;
-
+    background-color: white!important;
 }
 
 /* responsividade */
@@ -35,11 +35,12 @@
 .title {
     font-size: 2.5rem;
     text-align: center;
-    color: rgb(25, 56, 0);
+    color: rgb(1, 63, 1);
     font-weight: 700;
     font-family: "Poetsen One", sans-serif;
     margin-bottom: 2rem;
     margin-top: 2rem;
+    text-transform: uppercase;
   }
 
   @media screen and (max-width: 768px) {
@@ -60,10 +61,10 @@
     margin-bottom: 2rem;
     margin-top: 2rem;
     font-size: 1.25em;
-    color: #4a4a4a;
     text-align: center;
   }
 
   .legend b{
-    color: rgb(25, 56, 0);
+    color: rgb(66, 146, 0);
+    
   }

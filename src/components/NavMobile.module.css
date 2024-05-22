@@ -15,7 +15,7 @@
     position: fixed;
     right: 1.5rem;
     top: 4.5rem;
-    padding: 5px;
+    padding: 8px;
     padding-top: 0;
 
     display: flex;
@@ -32,23 +32,29 @@
   
   .navMobile li {
     width: 100%;
-    padding: 0.08rem;
+    padding: 0rem;
     border-radius: 15px;
     background: linear-gradient(to right, #2d374849, #4a5568, #2d3748);
+    
   }
   
   .navMobile a {
     display: flex;
     justify-content: space-between;
-    padding: 5px;
+    padding: 12px;
     border-radius: 15px;
     background-color: #002c00e0;
+    text-decoration: none!important;
+    color: white;
+    gap:6px;
   }
   
   .navMobile span {
     display: flex;
     gap: 1px;
     font-size: 1.5rem;
+    text-decoration: none!important;
+    color: white;
   }
   
   .navMobile svg {

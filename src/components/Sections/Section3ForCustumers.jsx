@@ -18,10 +18,11 @@ export function Section3ForCustumers() {
         <div className={styles.overlay1}>
           <h1 className={styles.title}>
             Estamos localizados aqui&#128205;
-            <br/>Alto Vale do Itajaí - SC
+            <br />
+            Alto Vale do Itajaí - SC
           </h1>
           <Viewer
-            style={{ width: "90%", height: "100%" }}
+            style={{ width: "90%", height: "100%"}}
             timeline={false}
             animation={false}
             homeButton={false}
@@ -34,7 +35,7 @@ export function Section3ForCustumers() {
             <CameraFlyTo destination={ibiramaPosition} duration={2} />
           </Viewer>
           <a
-            className="cesium-credit-logo"
+            className={styles["cesium-credit-logo"]}
             href="https://cesium.com/"
             target="_blank"
             rel="noreferrer"
@@ -89,15 +90,11 @@ export function Section3ForCustumers() {
           >
             {/* como add tooltip: */}
 
-
-
             <img
               className={styles.icon}
               src={Instagram}
               alt="Instagram Agile7 Tech"
-
             />
-
           </a>
           <a
             href="https://wa.me/5594981183574?text=Olá, Agile7! Tenho um ideia para um projeto. Podemos conversar?"
@@ -114,8 +111,6 @@ export function Section3ForCustumers() {
             href="mailto:l.cunha14.lc@gmail.com?subject= Interesse de Projeto - Orçamento - Dúvida - Sugestão&body=DESCREVA AQUI SUA MENSAGEM"
             // assunto - Interesse de Projeto - Orçamento - Dúvida - Sugestão
             // corpo - Nome - Empresa - Telefone - Email - Mensagem
-            //
-
             target="_blank"
             rel="noreferrer"
           >
