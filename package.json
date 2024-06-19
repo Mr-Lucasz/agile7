@@ -26,6 +26,7 @@
     "framer-motion": "^11.2.4",
     "gsap": "^3.12.5",
     "hamburger-react": "^2.5.1",
+    "jest-canvas-mock": "^2.5.2",
     "jest-cucumber": "^4.4.0",
     "lottie-web": "^5.12.2",
     "mongosh": "^2.2.6",

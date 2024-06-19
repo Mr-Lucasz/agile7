@@ -1,4 +1,3 @@
-// FormCTA.jsx
 import { LottieButton } from "./LottieButton";
 import styles from "./FormCTA.module.css";
 import TextField from "@mui/material/TextField";
@@ -9,6 +8,7 @@ import Alert from "@mui/material/Alert";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { URL_BACKEND } from "../config";
+
 export function FormCTA() {
   const {
     register,
@@ -20,39 +20,37 @@ export function FormCTA() {
 
   const [open, setOpen] = useState(false);
   const formValues = watch();
-  // Add state for checkbox
   const [checked, setChecked] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
   const onSubmit = async (data) => {
-    // Check if data is defined and is an object
     if (!data || typeof data !== "object") {
       return;
     }
-    // Check if all fields are filled and checkbox is checked
     if (Object.values(data).includes("") || !checked) {
       setOpen(true);
       console.log("Please fill all fields and check the checkbox");
       return;
     }
-    // Check if any field is empty
+
     for (let key in data) {
       if (data[key] === "") {
         console.log(`The field ${key} is empty. Please fill all fields.`);
         return;
       }
     }
-    // Make a POST request to the backend API
+
     try {
       console.log(URL_BACKEND);
       const response = await axios.post(URL_BACKEND, data);
       console.log(response.data);
-      setIsSuccess(true); // Set isSuccess to true after successful submission
+      setIsSuccess(true);
       reset();
     } catch (error) {
       console.error(`Error: ${error}`);
     }
   };
+
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
       return;
@@ -80,7 +78,6 @@ export function FormCTA() {
       "&.Mui-focused fieldset": {
         borderColor: "white",
       },
-      //   letra digitada no input tem que ficar white tbm
       "& input": {
         color: "white",
       },
@@ -139,7 +136,7 @@ export function FormCTA() {
             sx={{
               ...textFieldStyles,
               '& .MuiInputBase-input': {
-                color: 'white', // Adicione esta linha
+                color: 'white',
               },
             }}
             id="outlined-multiline-static"
@@ -169,7 +166,7 @@ export function FormCTA() {
 
         <LottieButton
             onSubmit={onSubmit}
-            formState={{ ...formValues, checkbox: checked, ...errors }} // Altere getValues() para formValues
+            formState={{ ...formValues, checkbox: checked, ...errors }}
         />
         {isSuccess && (
             <Snackbar open={isSuccess} autoHideDuration={6000} onClose={() => setIsSuccess(false)}>
@@ -179,6 +176,7 @@ export function FormCTA() {
             </Snackbar>
         )}
       </form>
+      {errors.nome && <p>O campo Nome é obrigatório.</p>}
     </>
   );
 }
