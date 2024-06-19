@@ -1,10 +1,9 @@
-import { useState } from "react";
-import React from 'react';
-import Lottie from "react-lottie";
-import animationData from "../assets/Button.json"; // Caminho para o seu arquivo JSON
-import PropTypes from "prop-types";
-import Snackbar from "@mui/material/Snackbar";
-import Alert from "@mui/material/Alert";
+import React, { useState } from 'react';
+import Lottie from 'react-lottie';
+import animationData from '../assets/Button.json';
+import PropTypes from 'prop-types';
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
 
 export function LottieButton({ onSubmit, formState }) {
   const [isHovered, setIsHovered] = useState(false);
@@ -13,14 +12,13 @@ export function LottieButton({ onSubmit, formState }) {
 
   const defaultOptions = {
     loop: true,
-    autoplay: false, // Desligue o autoplay para controlar a animação com hover
+    autoplay: false,
     animationData: animationData,
     rendererSettings: {
-      preserveAspectRatio: "xMidYMid meet",
+      preserveAspectRatio: 'xMidYMid meet',
     },
   };
 
-  // Funções para lidar com eventos de mouse
   const handleMouseEnter = () => {
     setIsHovered(true);
   };
@@ -28,14 +26,11 @@ export function LottieButton({ onSubmit, formState }) {
   const handleMouseLeave = () => {
     setIsHovered(false);
   };
-  const handleClick = async () => {
-    // Check if all fields are filled
-    console.log(formState);
-    const emptyFields = Object.entries(formState)
-      .filter(([key, val]) => val === "" || val === null || val === undefined)
-      .map(([key]) => key);
 
-    console.log("Empty fields:", emptyFields); // Print out the empty fields
+  const handleClick = async () => {
+    const emptyFields = Object.entries(formState)
+      .filter(([key, val]) => val === '' || val === null || val === undefined)
+      .map(([key]) => key);
 
     if (emptyFields.length > 0) {
       setMissingFields(emptyFields);
@@ -43,14 +38,11 @@ export function LottieButton({ onSubmit, formState }) {
       return;
     }
 
-    console.log("submit");
-    console.log("Form data:", formState); // Print out the form data
-
-    await onSubmit(formState); // Pass formState as argument to onSubmit
+    await onSubmit();
   };
 
   const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
+    if (reason === 'clickaway') {
       return;
     }
     setOpen(false);
@@ -61,16 +53,16 @@ export function LottieButton({ onSubmit, formState }) {
       onClick={handleClick}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      style={{ width: "80%", height: "auto", cursor: "pointer" }}
+      style={{ width: '80%', height: 'auto', cursor: 'pointer' }}
     >
       <Lottie
         options={defaultOptions}
-        isStopped={!isHovered} // A animação é interrompida se não estiver em hover
-        isPaused={!isHovered} // A animação é pausada se não estiver em hover
+        isStopped={!isHovered}
+        isPaused={!isHovered}
       />
       <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
         <Alert severity="warning">
-          Por favor, preencha os seguintes campos: {missingFields.join(", ")}
+          Por favor, preencha os seguintes campos: {missingFields.join(', ')}
         </Alert>
       </Snackbar>
     </div>

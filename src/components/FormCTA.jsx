@@ -5,7 +5,7 @@ import TextField from "@mui/material/TextField";
 import Checkbox from "@mui/material/Checkbox";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
-import LottieButton from "./LottieButton";
+import {LottieButton} from "./LottieButton";
 import styles from "./FormCTA.module.css";
 import { URL_BACKEND } from "../config";
 
