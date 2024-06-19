@@ -2,7 +2,7 @@
 import { LottieButton } from "./LottieButton";
 import styles from "./FormCTA.module.css";
 import TextField from "@mui/material/TextField";
-import { useState } from "react";
+import React, { useState } from "react";
 import Checkbox from "@mui/material/Checkbox";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
