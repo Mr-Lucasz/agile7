@@ -2,20 +2,36 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { FormCTA } from '../components/FormCTA';
 
-describe('FormCTA Component', () => {
-  test('Nome vazio', () => {
+describe('FormCTA', () => {
+  test('CT01-01: Nome vazio deve mostrar mensagem de erro', async () => {
     render(<FormCTA />);
-    const submitButton = screen.getByRole('button', { name: /enviar/i });
+
+    // Simular o preenchimento do formulário com um nome vazio
+    const nomeInput = screen.getByLabelText(/nome/i);
+    fireEvent.change(nomeInput, { target: { value: '' } });
+
+    // Simular o envio do formulário
+    const submitButton = screen.getByRole('button');
     fireEvent.click(submitButton);
-    expect(screen.getByText('O campo Nome é obrigatório.')).toBeInTheDocument();
+
+    // Verificar se a mensagem de erro é exibida
+    const errorMessage = await screen.findByText(/o campo nome é obrigatório\./i);
+    expect(errorMessage).toBeInTheDocument();
   });
 
-  test('Nome preenchido', () => {
+  test('CT01-02: Nome preenchido não deve mostrar mensagem de erro', async () => {
     render(<FormCTA />);
-    const nomeInput = screen.getByLabelText('Nome');
+
+    // Simular o preenchimento do formulário com um nome válido
+    const nomeInput = screen.getByLabelText(/nome/i);
     fireEvent.change(nomeInput, { target: { value: 'João' } });
-    const submitButton = screen.getByRole('button', { name: /enviar/i });
+
+    // Simular o envio do formulário
+    const submitButton = screen.getByRole('button');
     fireEvent.click(submitButton);
-    expect(screen.queryByText('O campo Nome é obrigatório.')).not.toBeInTheDocument();
+
+    // Verificar se a mensagem de erro não é exibida
+    const errorMessage = screen.queryByText(/o campo nome é obrigatório\./i);
+    expect(errorMessage).not.toBeInTheDocument();
   });
 });
