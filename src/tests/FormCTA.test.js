@@ -1,10 +1,9 @@
 import { defineFeature, loadFeature } from 'jest-cucumber';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import React from 'react';
 import FormCTA from '../components/FormCTA';
 
-const feature = loadFeature('./src/__tests__/FormCTA.feature');
+const feature = loadFeature('./src/tests/features/FormCTA.feature');
 
 defineFeature(feature, test => {
   test('Nome vazio', ({ given, when, then }) => {
@@ -18,6 +17,7 @@ defineFeature(feature, test => {
     });
 
     then('o sistema deve exibir uma mensagem de erro indicando que o campo "Nome" é obrigatório', () => {
+      // Ensure this expect statement is inside the `then` block
       expect(screen.getByText('O campo Nome é obrigatório.')).toBeInTheDocument();
     });
   });
@@ -38,6 +38,7 @@ defineFeature(feature, test => {
     });
 
     then('o sistema não deve exibir nenhuma mensagem de erro', () => {
+      // Ensure this expect statement is inside the `then` block
       expect(screen.queryByText('O campo Nome é obrigatório.')).not.toBeInTheDocument();
     });
   });

@@ -6,6 +6,14 @@ module.exports = {
     node: true,
     'jest/globals': true 
   },
+  overrides: [
+    {
+      files: ['*.test.js', '**/tests/**/*.js'],
+      rules: {
+        'jest/no-standalone-expect': 'off'
+      }
+    }
+  ],
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
