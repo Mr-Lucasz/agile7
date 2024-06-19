@@ -1,6 +1,5 @@
 import { defineFeature, loadFeature } from 'jest-cucumber';
 import { render, screen, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
 import FormCTA from '../components/FormCTA';
 
 const feature = loadFeature('./src/tests/features/FormCTA.feature');
