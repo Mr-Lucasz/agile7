@@ -1,32 +1,44 @@
-
+import { defineFeature, loadFeature } from 'jest-cucumber';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
+import React from 'react';
 import FormCTA from '../components/FormCTA';
 
-describe('FormCTA Component', () => {
-  test('CT01-01: Nome vazio exibe mensagem de erro', () => {
-    render(<FormCTA />);
-    
-    // Encontra o botão de submissão e clica nele sem preencher o campo "Nome"
-    const submitButton = screen.getByText('Enviar');
-    fireEvent.click(submitButton);
-    
-    // Verifica se a mensagem de erro é exibida
-    expect(screen.getByText('O campo Nome é obrigatório.')).toBeInTheDocument();
+const feature = loadFeature('./src/__tests__/FormCTA.feature');
+
+defineFeature(feature, test => {
+  test('Nome vazio', ({ given, when, then }) => {
+    given('o usuário está na página de captação de leads', () => {
+      render(<FormCTA />);
+    });
+
+    when('o usuário submete o formulário sem preencher o campo "Nome"', () => {
+      const submitButton = screen.getByText('Enviar');
+      fireEvent.click(submitButton);
+    });
+
+    then('o sistema deve exibir uma mensagem de erro indicando que o campo "Nome" é obrigatório', () => {
+      expect(screen.getByText('O campo Nome é obrigatório.')).toBeInTheDocument();
+    });
   });
 
-  test('CT01-02: Nome preenchido não exibe mensagem de erro', () => {
-    render(<FormCTA />);
-    
-    // Preenche o campo "Nome"
-    const nomeInput = screen.getByLabelText('Nome');
-    fireEvent.change(nomeInput, { target: { value: 'João' } });
-    
-    // Encontra o botão de submissão e clica nele
-    const submitButton = screen.getByText('Enviar');
-    fireEvent.click(submitButton);
-    
-    // Verifica se a mensagem de erro não é exibida
-    expect(screen.queryByText('O campo Nome é obrigatório.')).not.toBeInTheDocument();
+  test('Nome preenchido', ({ given, when, and, then }) => {
+    given('o usuário está na página de captação de leads', () => {
+      render(<FormCTA />);
+    });
+
+    when('o usuário preenche o campo "Nome" com "João"', () => {
+      const nomeInput = screen.getByLabelText('Nome');
+      fireEvent.change(nomeInput, { target: { value: 'João' } });
+    });
+
+    and('o usuário submete o formulário', () => {
+      const submitButton = screen.getByText('Enviar');
+      fireEvent.click(submitButton);
+    });
+
+    then('o sistema não deve exibir nenhuma mensagem de erro', () => {
+      expect(screen.queryByText('O campo Nome é obrigatório.')).not.toBeInTheDocument();
+    });
   });
 });
