@@ -1,4 +1,5 @@
 import { useState } from "react";
+import React from 'react';
 import Lottie from "react-lottie";
 import animationData from "../assets/Button.json"; // Caminho para o seu arquivo JSON
 import PropTypes from "prop-types";

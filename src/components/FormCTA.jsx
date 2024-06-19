@@ -1,12 +1,12 @@
-import { LottieButton } from "./LottieButton";
-import styles from "./FormCTA.module.css";
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import axios from "axios";
 import TextField from "@mui/material/TextField";
-import { useState } from "react";
 import Checkbox from "@mui/material/Checkbox";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
-import axios from "axios";
-import { useForm } from "react-hook-form";
+import LottieButton from "./LottieButton";
+import styles from "./FormCTA.module.css";
 import { URL_BACKEND } from "../config";
 
 export function FormCTA() {
@@ -17,16 +17,13 @@ export function FormCTA() {
     formState: { errors },
     watch,
   } = useForm();
-
   const [open, setOpen] = useState(false);
   const formValues = watch();
   const [checked, setChecked] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
   const onSubmit = async (data) => {
-    if (!data || typeof data !== "object") {
-      return;
-    }
+    if (!data || typeof data !== "object") return;
     if (Object.values(data).includes("") || !checked) {
       setOpen(true);
       console.log("Please fill all fields and check the checkbox");
@@ -52,35 +49,19 @@ export function FormCTA() {
   };
 
   const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
+    if (reason === "clickaway") return;
     setOpen(false);
   };
 
   const textFieldStyles = {
-    "& label.Mui-focused": {
-      color: "white",
-    },
-    "& .MuiInputLabel-root": {
-      color: "white",
-    },
-    "& .MuiInputLabel-shrink": {
-      color: "white",
-    },
+    "& label.Mui-focused": { color: "white" },
+    "& .MuiInputLabel-root": { color: "white" },
+    "& .MuiInputLabel-shrink": { color: "white" },
     "& .MuiOutlinedInput-root": {
-      "& fieldset": {
-        borderColor: "white",
-      },
-      "&:hover fieldset": {
-        borderColor: "white",
-      },
-      "&.Mui-focused fieldset": {
-        borderColor: "white",
-      },
-      "& input": {
-        color: "white",
-      },
+      "& fieldset": { borderColor: "white" },
+      "&:hover fieldset": { borderColor: "white" },
+      "&.Mui-focused fieldset": { borderColor: "white" },
+      "& input": { color: "white" },
     },
   };
 
@@ -94,19 +75,17 @@ export function FormCTA() {
           <TextField
             {...register("nome", { required: true })}
             sx={textFieldStyles}
-            id="outlined-basic"
             label="Nome"
             variant="outlined"
-            required={true}
+            required
             fullWidth
           />
           <TextField
             {...register("email", { required: true })}
             sx={textFieldStyles}
-            id="outlined-basic"
             label="Email"
             variant="outlined"
-            required={true}
+            required
             fullWidth
           />
         </div>
@@ -114,19 +93,17 @@ export function FormCTA() {
           <TextField
             {...register("telefone", { required: true })}
             sx={textFieldStyles}
-            id="outlined-basic"
             label="Telefone"
             variant="outlined"
-            required={true}
+            required
             fullWidth
           />
           <TextField
             {...register("empresa", { required: true })}
             sx={textFieldStyles}
-            id="outlined-basic"
             label="Empresa"
             variant="outlined"
-            required={true}
+            required
             fullWidth
           />
         </div>
@@ -135,11 +112,8 @@ export function FormCTA() {
             {...register("mensagem", { required: true })}
             sx={{
               ...textFieldStyles,
-              '& .MuiInputBase-input': {
-                color: 'white',
-              },
+              "& .MuiInputBase-input": { color: "white" },
             }}
-            id="outlined-multiline-static"
             label="Nos fale mais sobre o seu negócio."
             multiline
             rows={4}
@@ -152,28 +126,24 @@ export function FormCTA() {
             {...register("checkbox", { required: true })}
             checked={checked}
             onChange={(e) => setChecked(e.target.checked)}
-            sx={{
-              color: "white",
-              "&.Mui-checked": {
-                color: "white",
-              },
-            }}
+            sx={{ color: "white", "&.Mui-checked": { color: "white" } }}
           />
           <p>
             Eu concordo compartilhar esses dados para contato com a AGILE7 TECH.
           </p>
         </div>
 
-        <LottieButton
-            onSubmit={onSubmit}
-            formState={{ ...formValues, checkbox: checked, ...errors }}
-        />
+        <LottieButton onClick={handleSubmit(onSubmit)} />
         {isSuccess && (
-            <Snackbar open={isSuccess} autoHideDuration={6000} onClose={() => setIsSuccess(false)}>
-              <Alert onClose={() => setIsSuccess(false)} severity="success">
-                Formulário enviado com sucesso!
-              </Alert>
-            </Snackbar>
+          <Snackbar
+            open={isSuccess}
+            autoHideDuration={6000}
+            onClose={() => setIsSuccess(false)}
+          >
+            <Alert onClose={() => setIsSuccess(false)} severity="success">
+              Formulário enviado com sucesso!
+            </Alert>
+          </Snackbar>
         )}
       </form>
       {errors.nome && <p>O campo Nome é obrigatório.</p>}
