@@ -28,9 +28,8 @@ describe('FormCTA Component', () => {
 
   test('CT02-01: Email vazio', () => {
     render(<FormCTA />);
-    fireEvent.input(screen.getByLabelText(/email/i), { target: { value: '' } });
     fireEvent.click(screen.getByLabelText(/enviar/i));
-expect(screen.findByText('O campo Email é obrigatório.')).toBeInTheDocument();
+    expect(screen.getByText('O campo Email é obrigatório.')).toBeInTheDocument();
   });
   
   test('CT02-02: Email inválido', () => {
