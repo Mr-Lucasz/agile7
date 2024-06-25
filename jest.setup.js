@@ -1,4 +1,2 @@
-import { defineFeature, loadFeature } from 'jest-cucumber';
-
-global.defineFeature = defineFeature;
-global.loadFeature = loadFeature;
+import 'jest-canvas-mock';
+import '@testing-library/jest-dom';

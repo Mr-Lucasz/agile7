@@ -61,6 +61,7 @@ export function LottieButton({ onSubmit, formState }) {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       style={{ width: "80%", height: "auto", cursor: "pointer" }}
+      aria-label="enviar" 
     >
       <Lottie
         options={defaultOptions}

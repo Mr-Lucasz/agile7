@@ -1,4 +1,3 @@
-// FormCTA.jsx
 import { LottieButton } from "./LottieButton";
 import styles from "./FormCTA.module.css";
 import TextField from "@mui/material/TextField";
@@ -9,6 +8,7 @@ import Alert from "@mui/material/Alert";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { URL_BACKEND } from "../config";
+
 export function FormCTA() {
   const {
     register,
@@ -20,39 +20,55 @@ export function FormCTA() {
 
   const [open, setOpen] = useState(false);
   const formValues = watch();
-  // Add state for checkbox
   const [checked, setChecked] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const onSubmit = async (data) => {
-    // Check if data is defined and is an object
+    if (!data.nome) {
+      setErrorMessage("O campo Nome é obrigatório.");
+      return;
+    }
+
+    if (!data.email) {
+      setErrorMessage("O campo Email é obrigatório.");
+      return;
+    }
+    // Add a simple regex check for email format validation
+    const emailRegex = /\S+@\S+\.\S+/;
+    if (!emailRegex.test(data.email)) {
+      setErrorMessage("Formato de email inválido.");
+      return;
+    }
+
     if (!data || typeof data !== "object") {
       return;
     }
-    // Check if all fields are filled and checkbox is checked
+
     if (Object.values(data).includes("") || !checked) {
       setOpen(true);
       console.log("Please fill all fields and check the checkbox");
       return;
     }
-    // Check if any field is empty
+
     for (let key in data) {
       if (data[key] === "") {
         console.log(`The field ${key} is empty. Please fill all fields.`);
         return;
       }
     }
-    // Make a POST request to the backend API
+
     try {
       console.log(URL_BACKEND);
       const response = await axios.post(URL_BACKEND, data);
       console.log(response.data);
-      setIsSuccess(true); // Set isSuccess to true after successful submission
+      setIsSuccess(true);
       reset();
     } catch (error) {
       console.error(`Error: ${error}`);
     }
   };
+
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
       return;
@@ -80,7 +96,6 @@ export function FormCTA() {
       "&.Mui-focused fieldset": {
         borderColor: "white",
       },
-      //   letra digitada no input tem que ficar white tbm
       "& input": {
         color: "white",
       },
@@ -97,7 +112,7 @@ export function FormCTA() {
           <TextField
             {...register("nome", { required: true })}
             sx={textFieldStyles}
-            id="outlined-basic"
+            id="nome"
             label="Nome"
             variant="outlined"
             required={true}
@@ -106,18 +121,19 @@ export function FormCTA() {
           <TextField
             {...register("email", { required: true })}
             sx={textFieldStyles}
-            id="outlined-basic"
+            id="email"
             label="Email"
             variant="outlined"
             required={true}
             fullWidth
           />
         </div>
+        {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
         <div className={styles.container2}>
           <TextField
             {...register("telefone", { required: true })}
             sx={textFieldStyles}
-            id="outlined-basic"
+            id="telefone"
             label="Telefone"
             variant="outlined"
             required={true}
@@ -126,7 +142,7 @@ export function FormCTA() {
           <TextField
             {...register("empresa", { required: true })}
             sx={textFieldStyles}
-            id="outlined-basic"
+            id="empresa"
             label="Empresa"
             variant="outlined"
             required={true}
@@ -138,11 +154,11 @@ export function FormCTA() {
             {...register("mensagem", { required: true })}
             sx={{
               ...textFieldStyles,
-              '& .MuiInputBase-input': {
-                color: 'white', // Adicione esta linha
+              "& .MuiInputBase-input": {
+                color: "white",
               },
             }}
-            id="outlined-multiline-static"
+            id="mensagem"
             label="Nos fale mais sobre o seu negócio."
             multiline
             rows={4}
@@ -168,15 +184,19 @@ export function FormCTA() {
         </div>
 
         <LottieButton
-            onSubmit={onSubmit}
-            formState={{ ...formValues, checkbox: checked, ...errors }} // Altere getValues() para formValues
+          onSubmit={onSubmit}
+          formState={{ ...formValues, checkbox: checked, ...errors }}
         />
         {isSuccess && (
-            <Snackbar open={isSuccess} autoHideDuration={6000} onClose={() => setIsSuccess(false)}>
-              <Alert onClose={() => setIsSuccess(false)} severity="success">
-                Formulário enviado com sucesso!
-              </Alert>
-            </Snackbar>
+          <Snackbar
+            open={isSuccess}
+            autoHideDuration={6000}
+            onClose={() => setIsSuccess(false)}
+          >
+            <Alert onClose={() => setIsSuccess(false)} severity="success">
+              Formulário enviado com sucesso!
+            </Alert>
+          </Snackbar>
         )}
       </form>
     </>
