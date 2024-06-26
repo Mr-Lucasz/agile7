@@ -27,35 +27,29 @@ export function FormCTA() {
   const onSubmit = async (data) => {
     if (!data.nome) {
       setErrorMessage("O campo Nome é obrigatório.");
+      setOpen(true);
       return;
     }
 
     if (!data.email) {
       setErrorMessage("O campo Email é obrigatório.");
+      setOpen(true);
       return;
     }
+
     // Add a simple regex check for email format validation
     const emailRegex = /\S+@\S+\.\S+/;
     if (!emailRegex.test(data.email)) {
       setErrorMessage("Formato de email inválido.");
-      return;
-    }
-
-    if (!data || typeof data !== "object") {
-      return;
-    }
-
-    if (Object.values(data).includes("") || !checked) {
       setOpen(true);
-      console.log("Please fill all fields and check the checkbox");
       return;
     }
 
-    for (let key in data) {
-      if (data[key] === "") {
-        console.log(`The field ${key} is empty. Please fill all fields.`);
-        return;
-      }
+    // Ensure all fields are filled, including the checkbox
+    if (!checked) {
+      setErrorMessage("Por favor, aceite os termos.");
+      setOpen(true);
+      return;
     }
 
     try {
@@ -64,8 +58,11 @@ export function FormCTA() {
       console.log(response.data);
       setIsSuccess(true);
       reset();
+      setErrorMessage(""); // Clear any existing error messages
     } catch (error) {
       console.error(`Error: ${error}`);
+      setErrorMessage("Erro ao enviar o formulário. Tente novamente.");
+      setOpen(true);
     }
   };
 
@@ -128,7 +125,6 @@ export function FormCTA() {
             fullWidth
           />
         </div>
-        {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
         <div className={styles.container2}>
           <TextField
             {...register("telefone", { required: true })}
@@ -187,6 +183,15 @@ export function FormCTA() {
           onSubmit={onSubmit}
           formState={{ ...formValues, checkbox: checked, ...errors }}
         />
+        <Snackbar
+          open={open}
+          autoHideDuration={6000}
+          onClose={handleClose}
+        >
+          <Alert onClose={handleClose} severity="error">
+            {errorMessage}
+          </Alert>
+        </Snackbar>
         {isSuccess && (
           <Snackbar
             open={isSuccess}
