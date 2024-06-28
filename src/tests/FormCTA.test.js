@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { FormCTA } from './FormCTA';
+import { FormCTA } from '../components/FormCTA';
 import '@testing-library/jest-dom';
 import 'jest-canvas-mock';
 import { waitFor } from '@testing-library/react';
@@ -57,4 +57,14 @@ describe('FormCTA Component', () => {
     expect(screen.queryByText('O campo Email é obrigatório.')).not.toBeInTheDocument();
     expect(screen.queryByText('Formato de email inválido.')).not.toBeInTheDocument();
   });
+
+  test('CT03-01:Exibição de snackbar ao tentar enviar formulário com campos vazios', async () => {
+    render(<FormCTA />);
+    fireEvent.click(screen.getByLabelText(/enviar/i));
+    const errorMessage = await screen.findByText('Por favor, preencha os seguintes campos: nome, email, telefone, empresa, mensagem');
+    expect(errorMessage).toBeInTheDocument();
+  });
 });
+
+
+

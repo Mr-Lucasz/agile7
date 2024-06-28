@@ -27,25 +27,24 @@ export function LottieButton({ onSubmit, formState }) {
   const handleMouseLeave = () => {
     setIsHovered(false);
   };
+
   const handleClick = async () => {
-    // Check if all fields are filled
-    console.log(formState);
     const emptyFields = Object.entries(formState)
       .filter(([key, val]) => val === "" || val === null || val === undefined)
       .map(([key]) => key);
-
-    console.log("Empty fields:", emptyFields); // Print out the empty fields
-
+  
+    console.log("Empty fields:", emptyFields);
+  
     if (emptyFields.length > 0) {
       setMissingFields(emptyFields);
       setOpen(true);
       return;
     }
-
+  
     console.log("submit");
-    console.log("Form data:", formState); // Print out the form data
-
-    await onSubmit(formState); // Pass formState as argument to onSubmit
+    console.log("Form data:", formState);
+  
+    await onSubmit(formState);
   };
 
   const handleClose = (event, reason) => {
