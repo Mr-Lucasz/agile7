@@ -2,6 +2,7 @@ import styles from "./Header.module.css";
 import Agile_Solutions from "../assets/Agile_Solutions.svg";
 import Whatsapp from "../assets/Whatsapp.svg";
 import { NavMobile } from "./NavMobile";
+import React from "react";
 
 export function Header() {
   const whatsappNumber = "5594981183574";

@@ -1,4 +1,5 @@
 // src/pages/Home.jsx
+import React from "react";
 import {Header} from "../components/Header.jsx";
 import {Section1About} from "../components/Sections/Section1About.jsx";
 import {Section2Service} from "../components/Sections/Section2Service.jsx";

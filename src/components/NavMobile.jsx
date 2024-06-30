@@ -6,6 +6,7 @@ import { BiHomeAlt2 } from "react-icons/bi";
 import { FiSearch } from "react-icons/fi";
 import { PiChatCircleBold } from "react-icons/pi";
 import styles from './NavMobile.module.css'; 
+import React from "react";
 
 const routes = [
   {

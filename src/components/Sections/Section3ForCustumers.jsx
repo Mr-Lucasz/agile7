@@ -5,6 +5,7 @@ import Agile_Solutions from "../../assets/Agile_Solutions.svg";
 import Instagram from "../../assets/Instagram.svg";
 import Whatsapp from "../../assets/Whatsapp.svg";
 import gmail from "../../assets/icons8-gmail.svg";
+import React from "react";
 // import Lottie from "react-lottie";
 
 export function Section3ForCustumers() {

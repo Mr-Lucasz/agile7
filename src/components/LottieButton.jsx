@@ -38,6 +38,7 @@ export function LottieButton({ onSubmit, formState }) {
     if (emptyFields.length > 0) {
       setMissingFields(emptyFields);
       setOpen(true);
+      console.log("Snackbar should open with fields:", emptyFields.join(", "));
       return;
     }
   
@@ -60,7 +61,7 @@ export function LottieButton({ onSubmit, formState }) {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       style={{ width: "80%", height: "auto", cursor: "pointer" }}
-      aria-label="enviar" 
+      aria-label="enviar"
     >
       <Lottie
         options={defaultOptions}
@@ -69,7 +70,7 @@ export function LottieButton({ onSubmit, formState }) {
       />
       <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
         <Alert severity="warning">
-          Por favor, preencha os seguintes campos: {missingFields.join(", ")}
+          {`Por favor, preencha os seguintes campos: ${missingFields.join(", ")}`}
         </Alert>
       </Snackbar>
     </div>

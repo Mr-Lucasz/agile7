@@ -9,6 +9,7 @@ export default {
     "\\.(css|less|scss|sass)$": "identity-obj-proxy",
     "^.+\\.(css|sass|scss)$": "jest-transform-stub",
     "^react-lottie$": "<rootDir>/mocks/react-lottie.js",
+    "\\.svg$": "jest-transform-stub", 
   },
   transform: {
     "^.+\\.jsx?$": ["babel-jest", { plugins: ["transform-import-meta"] }],

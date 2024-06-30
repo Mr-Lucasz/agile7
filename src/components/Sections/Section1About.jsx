@@ -2,6 +2,7 @@ import styles from "./Section1About.module.css";
 import logovideo from "../../assets/logovideo.gif";
 import { TypeAnimation } from "react-type-animation";
 import { FormCTA } from "../FormCTA";
+import React from "react";
 
 export function Section1About() {
   return (

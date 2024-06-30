@@ -10,6 +10,7 @@ import foto4 from "../../assets/4.png";
 import foto5 from "../../assets/5.png";
 import foto6 from "../../assets/6.png";
 import { TypeAnimation } from "react-type-animation";
+import React from "react";
 
 
 const images = [
