@@ -2,8 +2,8 @@ const path = require('path');
 const fs = require('fs-extra');
 const createBundler = require('@bahmutov/cypress-esbuild-preprocessor');
 const { defineConfig } = require('cypress');
-const { createEsbuildPlugin } = require('@bahmutov/cypress-esbuild-preprocessor');
-const preprocessor = require('@badeball/cypress-cucumber-preprocessor'); // Updated import path
+const preprocessor = require('@badeball/cypress-cucumber-preprocessor');
+const createEsbuildPlugin = require('@badeball/cypress-cucumber-preprocessor/esbuild');
 
 async function getConfigurationByFile(file) {
   return fs.readJson(path.resolve('cypress', 'config', `${file}.json`));
@@ -18,7 +18,12 @@ async function setupNodeEvents(on, config) {
 
   await preprocessor.addCucumberPreprocessorPlugin(on, config);
 
-  on('file:preprocessor', createEsbuildPlugin(config));
+  on(
+    'file:preprocessor',
+    createBundler({
+      plugins: [createEsbuildPlugin(config)],
+    })
+  );
 
   return config;
 }

@@ -15,6 +15,7 @@
     "esbuild": "^0.22.0"
   },
   "dependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^20.1.0",
     "cypress-cucumber-preprocessor": "^4.3.1"
   },
   "cypress-cucumber-preprocessor": {
