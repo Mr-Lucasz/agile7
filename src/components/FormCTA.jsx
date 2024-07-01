@@ -165,6 +165,7 @@ export function FormCTA() {
           <Checkbox
             {...register("checkbox", { required: true })}
             checked={checked}
+            id="checkbox"
             onChange={(e) => setChecked(e.target.checked)}
             sx={{
               color: "white",
@@ -179,6 +180,7 @@ export function FormCTA() {
         </div>
 
         <LottieButton
+ 
           onSubmit={onSubmit}
           formState={{ ...formValues, checkbox: checked, ...errors }}
         />

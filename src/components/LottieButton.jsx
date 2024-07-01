@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import Lottie from "react-lottie";
 import animationData from "../assets/Button.json"; // Caminho para o seu arquivo JSON
 import PropTypes from "prop-types";
@@ -32,14 +32,14 @@ export function LottieButton({ onSubmit, formState }) {
     const emptyFields = Object.entries(formState)
       .filter(([key, val]) => val === "" || val === null || val === undefined)
       .map(([key]) => key);
-  
+
     if (emptyFields.length > 0) {
       setMissingFields(emptyFields);
       setOpen(true);
       console.log("Snackbar should open with fields:", emptyFields.join(", "));
       return;
     }
-  
+
     await onSubmit(formState);
   };
 
@@ -52,6 +52,7 @@ export function LottieButton({ onSubmit, formState }) {
 
   return (
     <div
+      id="submit-button"
       onClick={handleClick}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -65,7 +66,9 @@ export function LottieButton({ onSubmit, formState }) {
       />
       <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
         <Alert severity="warning">
-          {`Por favor, preencha os seguintes campos: ${missingFields.join(", ")}`}
+          {`Por favor, preencha os seguintes campos: ${missingFields.join(
+            ", "
+          )}`}
         </Alert>
       </Snackbar>
     </div>
