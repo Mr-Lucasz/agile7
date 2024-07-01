@@ -1,0 +1,26 @@
+{
+  "name": "integration-test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "cypress": "cypress run",
+    "cypress:open": "cypress open",
+    "cypress:chrome": "cypress run -b chrome"
+  },
+  "devDependencies": {
+    "cypress": "^13.12.0",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
+    "cypress-xpath": "^2.0.1",
+    "esbuild": "^0.20.2"
+  },
+  "dependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^20.0.2"
+  },
+  "cypress-cucumber-preprocessor": {
+    "stepDefinitions": "cypress/e2e/step_definitions/**/*.{js,mjs,ts,tsx}",
+    "featureFiles": "./cypress/e2e/features/**/*.{feature,features}",
+    "supportFiles": "./cypress/e2e/support/**/*.{js,mjs,ts,tsx}",
+    "fixturesFolder": "./cypress/fixtures/**/*.{json,js,mjs,ts,tsx}"
+  }
+}

@@ -33,17 +33,12 @@ export function LottieButton({ onSubmit, formState }) {
       .filter(([key, val]) => val === "" || val === null || val === undefined)
       .map(([key]) => key);
   
-    console.log("Empty fields:", emptyFields);
-  
     if (emptyFields.length > 0) {
       setMissingFields(emptyFields);
       setOpen(true);
       console.log("Snackbar should open with fields:", emptyFields.join(", "));
       return;
     }
-  
-    console.log("submit");
-    console.log("Form data:", formState);
   
     await onSubmit(formState);
   };

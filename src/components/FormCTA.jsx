@@ -53,7 +53,6 @@ export function FormCTA() {
     }
 
     try {
-      console.log(URL_BACKEND);
       const response = await axios.post(URL_BACKEND, data);
       console.log(response.data);
       setIsSuccess(true);
