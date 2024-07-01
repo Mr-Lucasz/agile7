@@ -3,7 +3,7 @@ const fs = require('fs-extra');
 const createBundler = require('@bahmutov/cypress-esbuild-preprocessor');
 const { defineConfig } = require('cypress');
 const preprocessor = require('@badeball/cypress-cucumber-preprocessor');
-const createEsbuildPlugin = require('@badeball/cypress-cucumber-preprocessor/esbuild');
+const createEsbuildPlugin = require('@badeball/cypress-cucumber-preprocessor/esbuild').createEsbuildPlugin;
 
 async function getConfigurationByFile(file) {
   return fs.readJson(path.resolve('cypress', 'config', `${file}.json`));
@@ -32,8 +32,8 @@ module.exports = defineConfig({
   e2e: {
     setupNodeEvents,
     specPattern: [
-      'cypress/e2e/**/*.feature',
-      'cypress/e2e/**/*.cy.{js,jsx,ts,tsx}',
+      'cypress/instegration_e2e/**/*.feature',
+      'cypress/instegration_e2e/**/*.cy.{js,jsx,ts,tsx}',
     ],
     supportFile: false,
     video: false,
