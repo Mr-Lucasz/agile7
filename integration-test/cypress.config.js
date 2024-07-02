@@ -32,8 +32,8 @@ module.exports = defineConfig({
   e2e: {
     setupNodeEvents,
     specPattern: [
-      'cypress/instegration_e2e/**/*.feature',
-      'cypress/instegration_e2e/**/*.cy.{js,jsx,ts,tsx}',
+      "cypress/integration_e2e/**/*.feature",
+      "cypress/integration_e2e/**/*.cy.{js,jsx,ts,tsx}",
     ],
     supportFile: false,
     video: false,

@@ -1,6 +1,6 @@
 {
-    "BASE_URL": "http://localhost:8080",
+    "BASE_URL": "http://localhost:4000/",
     "env": {
-        "API_URL": "http://localhost:3000"
+        "API_URL": "http://localhost:3000/api/form"
     }
   }

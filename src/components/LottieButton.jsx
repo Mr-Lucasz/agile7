@@ -52,14 +52,15 @@ export function LottieButton({ onSubmit, formState }) {
 
   return (
     <div
-      id="submit-button"
+
       onClick={handleClick}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       style={{ width: "80%", height: "auto", cursor: "pointer" }}
       aria-label="enviar"
     >
-      <Lottie
+      <Lottie      
+        id="submit-button"
         options={defaultOptions}
         isStopped={!isHovered} // A animação é interrompida se não estiver em hover
         isPaused={!isHovered} // A animação é pausada se não estiver em hover
