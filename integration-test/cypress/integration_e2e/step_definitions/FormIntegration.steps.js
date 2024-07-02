@@ -1,4 +1,4 @@
-import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
+import { Given, When, Then, And } from "@badeball/cypress-cucumber-preprocessor";
 import formIntegration from "../pageObjects/FormIntegration.page";
 
 Given("que o formulário de captação de leads está preenchido corretamente", function () {
@@ -43,6 +43,10 @@ Then("os dados não devem ser enviados para a API de armazenamento", () => {
 
 Then("a API de validação deve ser chamada", () => {
   formIntegration.submitFormWithValidation();
+});
+
+Then("a validação é bem-sucedida", () => {
+  formIntegration.checkValidationSuccess();
 });
 
 Then("se a validação for bem-sucedida, os dados devem ser armazenados", () => {

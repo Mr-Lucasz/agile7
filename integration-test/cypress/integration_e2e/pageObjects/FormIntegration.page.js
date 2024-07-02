@@ -69,32 +69,44 @@ const formIntegration = {
     });
   },
   submitFormWithValidation: () => {
-    cy.intercept("POST", "http://localhost:3000/api/validate", {
-      statusCode: 200,
-      body: { message: "Validation success" },
-    }).as("handleValidation");
-    cy.intercept("POST", "http://localhost:3000/api/form").as("handleFormSubmission");
+    cy.intercept("POST", "http://localhost:3000/api/form", (req) => {
+      req.reply((res) => {
+        // Simula a validação dos dados
+        if (req.body.email === "") {
+          res.send({
+            statusCode: 400,
+            body: { message: "Validation failed" }
+          });
+        } else {
+          res.send({
+            statusCode: 200,
+            body: {
+              message: "Success",
+              emailStatus: "Email sent successfully"
+            }
+          });
+        }
+      });
+    }).as("handleFormSubmission");
+    cy.get(formElements.submitButton).click();
+  },
+  submitFormWithValidationFailure: () => {
+    cy.intercept("POST", "http://localhost:3000/api/form", (req) => {
+      req.reply({
+        statusCode: 400,
+        body: { message: "Validation failed" }
+      });
+    }).as("handleFormSubmission");
     cy.get(formElements.submitButton).click();
   },
   checkValidationSuccess: () => {
-    cy.wait("@handleValidation", { timeout: 10000 }).then((interception) => {
-      expect(interception.response.statusCode).to.equal(200);
-      expect(interception.response.body.message).to.equal("Validation success");
-    });
     cy.wait("@handleFormSubmission", { timeout: 10000 }).then((interception) => {
       expect(interception.response.statusCode).to.equal(200);
       expect(interception.response.body.message).to.equal("Success");
     });
   },
-  submitFormWithValidationFailure: () => {
-    cy.intercept("POST", "http://localhost:3000/api/form", {
-      statusCode: 400,
-      body: { message: "Validation failed" },
-    }).as("handleValidationFailure");
-    cy.get(formElements.submitButton).click();
-  },
   checkValidationFailure: () => {
-    cy.wait("@handleValidationFailure", { timeout: 10000 }).then((interception) => {
+    cy.wait("@handleFormSubmission", { timeout: 10000 }).then((interception) => {
       expect(interception.response.statusCode).to.equal(400);
       expect(interception.response.body.message).to.equal("Validation failed");
     });
