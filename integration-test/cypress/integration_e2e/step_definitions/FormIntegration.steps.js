@@ -1,9 +1,17 @@
-import { Given, When, Then, And } from "@badeball/cypress-cucumber-preprocessor";
+import {
+  Given,
+  When,
+  Then,
+  And,
+} from "@badeball/cypress-cucumber-preprocessor";
 import formIntegration from "../pageObjects/FormIntegration.page";
 
-Given("que o formulário de captação de leads está preenchido corretamente", function () {
-  formIntegration.fillForm();
-});
+Given(
+  "que o formulário de captação de leads está preenchido corretamente",
+  function () {
+    formIntegration.fillForm();
+  }
+);
 
 When("o usuário clica no botão de submissão", () => {
   formIntegration.submitForm();
@@ -21,21 +29,30 @@ When("a API de armazenamento falha", () => {
   formIntegration.submitFormWithStorageFailure();
 });
 
-Then("os dados não devem ser armazenados devido à falha na API de armazenamento", () => {
-  formIntegration.checkStorageAPIFailure();
-});
+Then(
+  "os dados não devem ser armazenados devido à falha na API de armazenamento",
+  () => {
+    formIntegration.checkStorageAPIFailure();
+  }
+);
 
 When("a API de armazenamento é bem-sucedida", () => {
   formIntegration.submitFormSucessfully();
 });
 
-Then("os dados devem ser armazenados, mas o e-mail de notificação não deve ser enviado devido à falha no serviço de envio de e-mails", () => {
-  formIntegration.submitFormWithEmailFailure();
-});
+Then(
+  "os dados devem ser armazenados, mas o e-mail de notificação não deve ser enviado devido à falha no serviço de envio de e-mails",
+  () => {
+    formIntegration.submitFormWithEmailFailure();
+  }
+);
 
-Given("que o formulário de captação de leads não está preenchido corretamente", function () {
-  formIntegration.fillFormIncorrectly();
-});
+Given(
+  "que o formulário de captação de leads não está preenchido corretamente",
+  function () {
+    formIntegration.fillFormIncorrectly();
+  }
+);
 
 Then("os dados não devem ser enviados para a API de armazenamento", () => {
   formIntegration.checkFormValidation();
@@ -56,3 +73,30 @@ Then("se a validação for bem-sucedida, os dados devem ser armazenados", () => 
 Then("os dados não devem ser armazenados devido à falha na validação", () => {
   formIntegration.checkValidationFailure();
 });
+
+/*
+    When o usuário clica no botão de contato WhatsApp no header
+    Then a API de redirecionamento para o WhatsApp deve ser chamada
+    And o usuário deve ser redirecionado para o aplicativo do WhatsApp
+    And uma mensagem pré-formatada deve ser preenchida no campo de mensagem do WhatsApp
+
+*/
+
+When("o usuário clica no botão de contato WhatsApp no header", () => {
+  formIntegration.checkWhatsappButton();
+});
+
+Then("a API de redirecionamento para o WhatsApp deve ser chamada", () => {
+  formIntegration.checkLinkToWhatsapp();
+});
+
+And("o usuário deve ser redirecionado para o aplicativo do WhatsApp", () => {
+  formIntegration.redirectToWhatsapp();
+});
+
+And(
+  "uma mensagem pré-formatada deve ser preenchida no campo de mensagem do WhatsApp",
+  () => {
+    formIntegration.checkWhatsappMessage;
+  }
+);

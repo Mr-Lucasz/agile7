@@ -32,7 +32,7 @@ export function Header() {
         </ul>
       </nav>
 
-      <button className={styles.button} onClick={openWhatsapp}>
+      <button id="btn-contato" className={styles.button} onClick={openWhatsapp}>
         CONTATO
         <img src={Whatsapp} alt="Whatsapp" />
       </button>

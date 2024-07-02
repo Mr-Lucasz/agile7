@@ -111,6 +111,31 @@ const formIntegration = {
       expect(interception.response.body.message).to.equal("Validation failed");
     });
   },
+  checkSnackbarSuccess: () => {
+    cy.get(".MuiSnackbar-root").should('contain', 'Formulário enviado com sucesso!');
+  },
+  checkSnackbarNotDisplayed: () => {
+    cy.get(".MuiSnackbar-root").should('not.exist');
+  },
+
+  checkWhatsappButton: () => {
+    cy.get('#btn-contato').should('be.visible');
+  },
+    // Then a API de redirecionamento para o WhatsApp deve ser chamada
+ checkLinkToWhatsapp: () => {
+    cy.get('#btn-contato').should('have.attr', 'href', 'https://api.whatsapp.com/send/?phone=5594981183574&text=Ol%C3%A1%2C+Agile7%21+Tenho+um+ideia+para+um+projeto.+Podemos+conversar%3F&type=phone_number&app_absent=0');
+  },
+  //    And o usuário deve ser redirecionado para o aplicativo do WhatsApp
+  redirectToWhatsapp: () => {
+    cy.get('#btn-contato').click();
+    cy.url().should('include', 'https://api.whatsapp.com/send/?phone=5594981183574&text=Ol%C3%A1%2C+Agile7%21+Tenho+um+ideia+para+um+projeto.+Podemos+conversar%3F&type=phone_number&app_absent=0');
+  },
+  //valide msg pre formatato link api,     And uma mensagem pré-formatada deve ser preenchida no campo de mensagem do WhatsApp
+  checkPreformattedMessage: () => {
+    cy.get('#btn-contato').click();
+    cy.url().should('include', 'Ol%C3%A1%2C+Agile7%21+Tenho+um+ideia+para+um+projeto.+Podemos+conversar%3F');
+  },  
+  
 };
 
 export default formIntegration;
