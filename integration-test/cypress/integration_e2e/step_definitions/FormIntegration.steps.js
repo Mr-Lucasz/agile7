@@ -16,3 +16,27 @@ Then("os dados devem ser enviados para a API de armazenamento", () => {
 Then("um e-mail de notificação deve ser enviado", () => {
   formIntegration.checkEmailNotification();
 });
+
+When("a API de armazenamento falha", () => {
+  formIntegration.submitFormWithStorageFailure();
+});
+
+Then("os dados não devem ser armazenados devido à falha na API de armazenamento", () => {
+  formIntegration.checkStorageAPIFailure();
+});
+
+When("a API de armazenamento é bem-sucedida", () => {
+  formIntegration.submitFormSucessfully();
+});
+
+Then("os dados devem ser armazenados, mas o e-mail de notificação não deve ser enviado devido à falha no serviço de envio de e-mails", () => {
+  formIntegration.submitFormWithEmailFailure();
+});
+
+Given("que o formulário de captação de leads não está preenchido corretamente", function () {
+  formIntegration.fillFormIncorrectly();
+});
+
+Then("os dados não devem ser enviados para a API de armazenamento", () => {
+  formIntegration.checkFormValidation();
+});

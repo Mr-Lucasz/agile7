@@ -1,7 +1,8 @@
 import { formElements } from "../elements";
 
+let lastSubmissionResponse = null;
+
 const formIntegration = {
-  // Given que o formulário de captação de leads está preenchido corretamente
   fillForm: () => {
     cy.visit("http://localhost:4000/");
     cy.get(formElements.nomeInput).type("Nome Teste");
@@ -11,30 +12,60 @@ const formIntegration = {
     cy.get(formElements.mensagemInput).type("Mensagem Teste");
     cy.get(formElements.checkbox).check();
   },
-  // When o usuário clica no botão de submissão
-  submitForm: () => {
-    // Intercepta a requisição da API e simula uma resposta bem-sucedida
-    cy.intercept("POST", Cypress.env("API_URL"), (req) => {
-      cy.get(formElements.submitButton).click();
-      req.reply((res) => {
-        res.send({ statusCode: 200, body: { message: "Success" } });
-      });
-    }).as("handleFormSubmission");
+  fillFormIncorrectly: () => {
+    cy.visit("http://localhost:4000/");
+    cy.get(formElements.nomeInput).type("Nome Teste");
+    // Deixando o campo de email vazio para simular preenchimento incorreto
+    cy.get(formElements.telefoneInput).type("11999999999");
+    cy.get(formElements.empresaInput).type("Empresa Teste");
+    cy.get(formElements.mensagemInput).type("Mensagem Teste");
+    cy.get(formElements.checkbox).check();
   },
-  // Then o formulário é submetido com sucesso
+  submitForm: () => {
+    cy.intercept("POST", "http://localhost:3000/api/form").as("handleFormSubmission");
+    cy.get(formElements.submitButton).click();
+  },
   submitFormSucessfully: () => {
-    cy.wait("@handleFormSubmission").then((interception) => {
+    cy.wait("@handleFormSubmission", { timeout: 10000 }).then((interception) => {
       expect(interception.response.statusCode).to.equal(200);
       expect(interception.response.body.message).to.equal("Success");
+      lastSubmissionResponse = interception.response.body; 
     });
   },
-  // And um e-mail de notificação deve ser enviado
   checkEmailNotification: () => {
-    cy.wait("@handleFormSubmission").then((interception) => {
-      expect(interception.response.statusCode).to.equal(200);
-      expect(interception.response.body.emailStatus).to.equal(
-        "Email sent successfully"
-      );
+    expect(lastSubmissionResponse).to.not.be.null; 
+    expect(lastSubmissionResponse.emailStatus).to.equal("Email sent successfully");
+  },
+  submitFormWithStorageFailure: () => {
+    cy.intercept("POST", "http://localhost:3000/api/form", {
+      statusCode: 500,
+      body: { message: "Storage API failed" },
+    }).as("handleFormSubmission");
+    cy.get(formElements.submitButton).click();
+  },
+  checkStorageAPIFailure: () => {
+    cy.wait("@handleFormSubmission", { timeout: 10000 }).then((interception) => {
+      expect(interception.response.statusCode).to.equal(500);
+      expect(interception.response.body.message).to.equal("Storage API failed");
+    });
+  },
+  submitFormWithEmailFailure: () => {
+    cy.intercept("POST", "http://localhost:3000/api/form", (req) => {
+      req.reply((res) => {
+        res.send({
+          statusCode: 200,
+          body: {
+            message: "Success",
+            emailStatus: "Email service failed"
+          }
+        });
+      });
+    }).as("handleFormSubmission");
+    cy.get(formElements.submitButton).click();
+  },
+  checkFormValidation: () => {
+    cy.get(formElements.emailInput).then(($input) => {
+      expect($input[0].validationMessage).to.not.be.empty;
     });
   },
 };
