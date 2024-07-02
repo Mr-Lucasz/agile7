@@ -22,3 +22,20 @@ Scenario: Formulário não preenchido corretamente
   Given que o formulário de captação de leads não está preenchido corretamente
   When o usuário clica no botão de submissão
   Then os dados não devem ser enviados para a API de armazenamento
+
+Scenario: Validação e armazenamento bem-sucedidos
+  Given que o formulário de captação de leads está preenchido corretamente
+  When o usuário clica no botão de submissão
+  Then a API de validação deve ser chamada
+  And se a validação for bem-sucedida, os dados devem ser armazenados
+
+Scenario: Falha na API de armazenamento após validação bem-sucedida
+  Given que o formulário de captação de leads está preenchido corretamente
+  When o usuário clica no botão de submissão
+  And a validação é bem-sucedida
+  Then os dados não devem ser armazenados devido à falha na API de armazenamento
+
+Scenario: Falha na API de validação
+  Given que o formulário de captação de leads está preenchido corretamente
+  When o usuário clica no botão de submissão
+  Then os dados não devem ser armazenados devido à falha na validação
